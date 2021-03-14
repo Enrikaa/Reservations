@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "C:\\Users\\Enrika\\anaconda3\\envs\\myDjangoEnv\\python.exe",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true
+}
