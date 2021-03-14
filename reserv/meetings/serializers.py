@@ -21,17 +21,3 @@ class MeetingRoomSerializer(serializers.ModelSerializer):
         model = MeetingRoom
         fields = "__all__"
         # read_only_fields = ("id",)
-
-
-# class RoomSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Room
-#         # fields = ["id", "title", "author", "email"]
-#         fields = "__all__"
-
-
-# class ReservationSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Reservation
-#         # fields = ["id", "title", "author", "email"]
-#         fields = "__all__"
