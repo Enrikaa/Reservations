@@ -1,5 +1,21 @@
 from rest_framework import serializers
-from .models import Employee, MeetingRoom, Reservation
+from .models import Employee, MeetingRoom, Reservation, User
+from djoser.serializers import UserCreateSerializer, UserSerializer
+
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = User
+        fields = (
+            "id",
+            "email",
+            "username",
+            "password",
+            "first_name",
+            "last_name",
+            "phone",
+        )
+        # read_only_fields = ("id",)
 
 
 class ReservationSerializer(serializers.ModelSerializer):

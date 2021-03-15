@@ -14,6 +14,13 @@ from rest_framework.decorators import api_view
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
 import numpy as np
+from rest_framework.authentication import (
+    SessionAuthentication,
+    TokenAuthentication,
+    BasicAuthentication,
+)
+from rest_framework.permissions import IsAuthenticated
+
 
 # Make filter by status
 class GetRooms(generics.ListAPIView):
@@ -29,10 +36,10 @@ class GetUsers(generics.ListAPIView):
 # --- Atspausdinti laisvus room's /rooms urle
 # Make filter by status
 class GetReservations(generics.ListAPIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    premission_classes = [IsAuthenticated]
     serializer_class = ReservationSerializer
     queryset = Reservation.objects.all()
-    print("0")
-    # print(request.data)
 
 
 class GenericAPIView(
@@ -46,6 +53,9 @@ class GenericAPIView(
     serializer_class = ReservationSerializer
     queryset = Reservation.objects.all()
     lookup_field = "id"
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
 
