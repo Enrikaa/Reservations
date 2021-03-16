@@ -41,7 +41,6 @@ class GetUsers(generics.ListAPIView):
     queryset = Employee.objects.all()
 
 
-# --- Atspausdinti laisvus room's /rooms urle
 # Make filter by status
 class GetReservations(generics.ListAPIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
