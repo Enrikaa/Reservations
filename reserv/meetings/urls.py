@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import GetRooms, GenericAPIView, GetReservations, GetUsers
+from meetings import views
+from .views import GetRooms, GenericAPIView, GetReservations, GetUsers, restricted
 
 urlpatterns = [
     path("rooms/", GetRooms.as_view()),
@@ -8,4 +9,5 @@ urlpatterns = [
     path("getusers/", GetUsers.as_view()),
     path("", include("djoser.urls")),
     path("", include("djoser.urls.authtoken")),
+    path("restricted/", views.restricted),
 ]

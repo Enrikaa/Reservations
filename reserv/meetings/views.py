@@ -10,16 +10,24 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
+from rest_framework import status
 import numpy as np
 from rest_framework.authentication import (
     SessionAuthentication,
     TokenAuthentication,
     BasicAuthentication,
 )
-from rest_framework.permissions import IsAuthenticated
+
+
+@api_view(["GET"])
+def restricted(request, *args, **kwargs):
+    return Response(
+        data="Information just for logged in Users", status=status.HTTP_200_OK
+    )
 
 
 # Make filter by status

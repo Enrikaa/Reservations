@@ -136,7 +136,9 @@ REST_FRAMEWORK = {
 # Going in app and finding User model
 AUTH_USER_MODEL = "meetings.User"
 DJOSER = {
+    # Login with email
     "LOGIN_FIELD": "email",
+    # Login with password
     "USER_CREATE_PASSWORD_RETYPE": True,
     "SERIALIZERS": {
         "user_create": "meetings.serializers.UserCreateSerializer",
