@@ -83,8 +83,11 @@ DATABASES = {
         "NAME": "reservations",
         "USER": "postgres",
         "PASSWORD": "2051Enr",
-        "HOST": "localhost",
+        "HOST": "localhost",  # Later change in 'db'
         "PORT": "5432",
+        "TEST": {
+            "NAME": "mytestdatabase",
+        }
     }
 }
 
@@ -136,16 +139,13 @@ REST_FRAMEWORK = {
 # Going in app and finding User model
 AUTH_USER_MODEL = "meetings.User"
 DJOSER = {
-    # Login with email
     "LOGIN_FIELD": "email",
-    # Login with password
     "USER_CREATE_PASSWORD_RETYPE": True,
     "SERIALIZERS": {
         "user_create": "meetings.serializers.UserCreateSerializer",
         "user": "meetings.serializers.UserCreateSerializer",
     },
 }
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Employee, MeetingRoom, Reservation, User
+from .models import MeetingRoom, Reservation, User
 from djoser.serializers import UserCreateSerializer, UserSerializer
 
 
@@ -21,13 +21,6 @@ class UserCreateSerializer(UserCreateSerializer):
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = "__all__"
-        # read_only_fields = ("id",)
-
-
-class EmployeeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employee
         fields = "__all__"
         # read_only_fields = ("id",)
 

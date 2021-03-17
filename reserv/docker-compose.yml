@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12.3
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2051Enr
+      POSTGRES_DB: reservations
+    networks:
+      - default
+  api:
+    build: .
+    restart: on-failure
+    command: /bin/bash -c "python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+    working_dir: /home/reservproject
+    volumes:
+      - ./:/home/reservproject
+    tty: true
+    networks:
+      - default
+    

@@ -1,10 +1,11 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import Reservation, MeetingRoom, Employee
+from django.utils import timezone
+from .models import Reservation, MeetingRoom
 from .serializers import (
     ReservationSerializer,
     MeetingRoomSerializer,
-    EmployeeSerializer,
 )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -15,15 +16,16 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
 from rest_framework import status
-import numpy as np
 from rest_framework.authentication import (
     SessionAuthentication,
     TokenAuthentication,
     BasicAuthentication,
 )
+from rest_framework.exceptions import NotFound
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def restricted(request, *args, **kwargs):
     return Response(
         data="Information just for logged in Users", status=status.HTTP_200_OK
@@ -31,20 +33,47 @@ def restricted(request, *args, **kwargs):
 
 
 # Make filter by status
-class GetRooms(generics.ListAPIView):
-    serializer_class = MeetingRoomSerializer
-    queryset = MeetingRoom.objects.all()
+# class MeetingRoom(APIView):
+
+#     def get_object(self, id):
+
+#         try:
+#             return MeetingRoom.objects.get(id=id)
+#         except MeetingRoom.DoesNotExist:
+#             return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+#         serializer_class = MeetingRoomSerializer
+#         queryset = MeetingRoom.objects.all()
 
 
-class GetUsers(generics.ListAPIView):
-    serializer_class = EmployeeSerializer
-    queryset = Employee.objects.all()
+class RoomView(APIView):
+
+    def get_object(self, room_id):
+        try:
+            return MeetingRoom.objects.get(id=room_id)
+        except MeetingRoom.DoesNotExist:
+            raise NotFound(f"The meeting room id: {room_id} was not found.")
+
+    def get(self, request, room_id):
+        room = self.get_object(room_id=room_id)
+        reservations = room.reservations.filter(date_from__gte=timezone.now())
+
+        all_reservations = ReservationSerializer(reservations, many=True)
+        return Response(data=all_reservations.data)
+
+    def post(self, request, room_id):
+        post_body = json.loads(request.body)
+        reservation_serializer = ReservationSerializer(data=post_body)
+
+        if reservation_serializer.is_valid():
+            reservation_serializer.save()
+            return Response(data=reservation_serializer.data)
+        else:
+            return Response(data=reservation_serializer.errors)
 
 
 # Make filter by status
 class GetReservations(generics.ListAPIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    premission_classes = [IsAuthenticated]
     serializer_class = ReservationSerializer
     queryset = Reservation.objects.all()
 
@@ -60,9 +89,6 @@ class GenericAPIView(
     serializer_class = ReservationSerializer
     queryset = Reservation.objects.all()
     lookup_field = "id"
-    # authentication_classes = [SessionAuthentication, BasicAuthentication]
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
 

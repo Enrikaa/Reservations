@@ -1,22 +1,25 @@
-1. Paziurek video apie REST API 
-2. Paziurek vidoe apie Django Rest Framework (DRF)
-3. susikurt modelius
-4. api endpoint
-    1. Get meeting room reservation
-        - URL: 'room/<room_id>'
-        - Reservation - issfiltruot rezervacijas su room_id
-        - status - `Scheduled`, o ne `Canceled` / `Ended` - filtruoti tik Scheduled
-        - 
-    2. Create reservation 
-        - Post request 
-        - Turi nurodyt Room id
-        - Employees ids
+# Overview
 
-    3. Cancel reservation
-        - PUT request
-        - url: 'reservation/<reservation_id>/cancel
-        - 
+This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
 
-1. How to get Room Reservations
- - send GET request to `/room/<room_id>`
-    - room_id - id of room
+_Created by:_**Enrika Vyšniauskaitė**
+
+#Requirements
+
+- Python => 3.8
+
+# Setup
+
+1. Create and activate a virtual environment (python version => 3.8)
+   virtualenv env -p python
+   source env/bin/activate
+2. Install pip libraries
+   pip install -r requirements.pip (-----------------------)
+
+#How to run
+
+1. REGISTER:
+
+# Docker
+
+- run: `docker-compose up --build`.
