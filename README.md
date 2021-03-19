@@ -41,7 +41,8 @@
        ```sh
      - http://127.0.0.1:8000/api/v1/token/login/
        ```
-        Make POST request and take auth_token from login
+        Make POST request and take auth_token from login. Write your super user login and email in POSTMAN -> Body -> formatdata/raw/json
+        
 
 
 
