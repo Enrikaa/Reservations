@@ -8,7 +8,7 @@ urlpatterns = [
     path("", include("djoser.urls.authtoken")),
 
     # Check all rooms
-    path("rooms/all/", RoomsAll.as_view()),
+    path("rooms/all/", RoomsAll.as_visew()),
     # Check all reservations details
     path("reservations/all/", ReservationsAll.as_view()),
     # Delete reservation
