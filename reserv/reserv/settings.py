@@ -25,7 +25,7 @@ SECRET_KEY = "w6*s7ri0k+-zti_xj3ll+3+nswy=8xj05k1)=(zcjyoh)#=yb@"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         "NAME": "reservations",
         "USER": "postgres",
         "PASSWORD": "2051Enr",
-        "HOST": "localhost",  # Later change in 'db'
+        "HOST": "db",
         "PORT": "5432",
         "TEST": {
             "NAME": "mytestdatabase",
@@ -132,8 +132,8 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": (
-        # "rest_framework.permissions.AllowAny",
-        "rest_framework.permissions.IsAuthenticated",
+        "rest_framework.permissions.AllowAny",
+        # "rest_framework.permissions.IsAuthenticated",
     ),
 }
 # Going in app and finding User model
