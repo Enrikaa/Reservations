@@ -12,102 +12,76 @@
 
 ### SETUP
 
-1. Create and activate a virtual environment (python version => 3.8)
-   ```sh
-   pip install virtualenv
-   ```
+Run the project with Docker
+`docker-compose up --build`
 
-2. Install requirements.txt
-   ```sh
-   pip install -r requirements.txt
-   ```
+> Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First you need to Login to get Auth Token with default user: `admin@admin.com` and password: `admin`. From login you will receive "auth_token". This token gives access to every API endpoint.
 
-> Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
-
-### CREATE SUPER USER
-
-1. Create super user (three options: TerminaL, POSTMAN, Django rest framework):
-   -  Terminal:
-      ```sh
-      python manage.py createsuperuser
-      ```
-   -  Postman:
-       ```sh
-      http://127.0.0.1:8000/api/v1/users/
-        ```
-        Write your super user data in Postman -> Body -> formatdata/raw/json
-
+In your Postman import API endpoint collection fixture file named: `Reservations.postman_collection.json`
 
 ### GET AUTH TOKEN
 
-2. Get token from authentication:
+1. Get token from authentication:
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/token/login/
+      http://localhost:8000/api/v1/token/login/
        ```
-        Make POST request and take auth_token from login. Write your super user  email and password in POSTMAN -> Body -> formatdata/raw/json
+        Make POST request and take auth_token from login. Use default credentials username: `admin@admin.com` password: `admin`
         
 ### CHECK ALL EXISTING ROOMS
-3. Check all existing rooms:
+2. Check all existing rooms:
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/rooms/all/
+      http://localhost:8000/api/v1/rooms/all/
        ```
       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
       Make GET request and check all existing rooms
 
 ### CHECK ALL EXISTING RESERVATIONS
-4. Check all existing reservations:
+3. Check all existing reservations:
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/reservations/all/
+      http://localhost:8000/api/v1/reservations/all/
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make GET request and check all existing reservations
 
 ### GET MEETING ROOM RESERVATIONS
-5. Get meeting room reservations:
+4. Get meeting room reservations:
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/reservations/room/2/
+      http://localhost:8000/api/v1/reservations/room/1/
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make GET request and check meeting room reservations
        
 ### CREATE RESERVATION
-6. Create reservation:
+5. Create reservation:
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/create/reservation/
+      http://localhost:8000/api/v1/create/reservation/
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make POST request and create reservation
+    - Body example in Postman collection
 
 ### CANCEL RESERVATION
-7. Cancel reservation
+6. Cancel reservation
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/reservation/delete/27/
+      http://localhost:8000/api/v1/reservation/delete/1/
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make DELETE request and delete reservation by id
 
 ### LOGOUT
-8. Logout and destroy token
+7. Logout and destroy token
    - In Postman use this endpoint:
        ```sh
-      http://127.0.0.1:8000/api/v1/token/logout/
+      http://localhost:8000/api/v1/token/logout/
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
        Make POST request and logout
-
-
-
-
-### Docker
-
-- run: `docker-compose up --build`.
-
 
 
 ## Contact
