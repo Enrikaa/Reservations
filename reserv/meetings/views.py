@@ -50,6 +50,7 @@ class ReservationByRoom(APIView):
     # Get specific meeting room reservations
     def get(self, request, room_id):
         room = self.get_object(room_id=room_id)
+        # Additional factor: setting to not show past reservations
         reservations = room.reservations.filter(date_from__gte=timezone.now())
 
         all_reservations = ReservationSerializer(reservations, many=True)
