@@ -45,7 +45,6 @@
         
 ### CHECK ALL EXISTING ROOMS
 3. Check all existing rooms:
-
    - In Postman use this endpoint:
        ```sh
       http://127.0.0.1:8000/api/v1/rooms/all/
@@ -55,7 +54,6 @@
 
 ### CHECK ALL EXISTING RESERVATIONS
 4. Check all existing reservations:
-
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
       http://127.0.0.1:8000/api/v1/reservations/all/
@@ -65,7 +63,6 @@
 
 ### GET MEETING ROOM RESERVATIONS
 5. Get meeting room reservations:
-
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
       http://127.0.0.1:8000/api/v1/reservations/room/2/
@@ -75,7 +72,6 @@
        
 ### CREATE RESERVATION
 6. Create reservation:
-
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
       http://127.0.0.1:8000/api/v1/create/reservation/
@@ -85,7 +81,6 @@
 
 ### CANCEL RESERVATION
 7. Cancel reservation
-
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
       http://127.0.0.1:8000/api/v1/reservation/delete/27/
@@ -95,7 +90,6 @@
 
 ### LOGOUT
 8. Logout and destroy token
-
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
       http://127.0.0.1:8000/api/v1/token/logout/
