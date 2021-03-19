@@ -23,11 +23,11 @@
 ### CREATE SUPER USER
 
 * Create super user (three options: TerminaL, POSTMAN, Django rest framework):
-   1  Terminal:
+   -  Terminal:
       ```sh
       python manage.py createsuperuser
       ```
-   2  Postman:
+   -  Postman:
        ```sh
       http://127.0.0.1:8000/api/v1/users/
         ```
