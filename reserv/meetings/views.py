@@ -1,16 +1,12 @@
 import json
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from .models import Reservation, MeetingRoom
 from .serializers import (
     ReservationSerializer,
     MeetingRoomSerializer,
 )
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
@@ -22,11 +18,11 @@ from rest_framework.authentication import (
 )
 from rest_framework.exceptions import NotFound
 
-# Check if user is authenticated
-
 
 # Get all rooms
 class RoomsAll(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         room = MeetingRoom.objects.all()
 
@@ -36,13 +32,15 @@ class RoomsAll(APIView):
 
 # Get all reservations
 class ReservationsAll(generics.ListAPIView):
-
+    permission_classes = [IsAuthenticated]
     serializer_class = ReservationSerializer
     queryset = Reservation.objects.all()
 
 
 # Get meeting room reservations
 class ReservationByRoom(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, room_id):
         try:
             return MeetingRoom.objects.get(id=room_id)
@@ -58,11 +56,12 @@ class ReservationByRoom(APIView):
         return Response(data=all_reservations.data)
 
 
+# Create reservation
 class CreateReservation(
     generics.GenericAPIView,
     mixins.CreateModelMixin,
 ):
-
+    permission_classes = [IsAuthenticated]
     serializer_class = ReservationSerializer
 
     def post(self, request):
@@ -71,6 +70,8 @@ class CreateReservation(
 
 # Check reservation by id and delete it
 class DeleteReservation(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_reservation(self, reservation_id):
         try:
             return Reservation.objects.get(id=reservation_id)
