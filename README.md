@@ -18,7 +18,7 @@ Run the project with Docker
 docker-compose up --build
 ```
 
-> Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First you need to login to get "auth_token" with default user: `admin@admin.com` and password: `admin`. From login you will receive "auth_token". This token gives access to every API endpoint.
+> Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First you need to login to get Auth Token with default user: `admin@admin.com` and password: `admin`. From login you will receive "auth_token". This token gives access to every API endpoint.
 
 In your Postman import API endpoint collection fixture file named: `Reservations.postman_collection.json`
 
