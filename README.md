@@ -5,7 +5,7 @@
 ### TECHNOLOGIES
    * Python
    * Django
-   * Django REST framework
+   * Django REST Framework
    * Djoser
    * Postman
    * PostgreSQL
