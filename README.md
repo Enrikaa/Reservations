@@ -37,26 +37,21 @@
 ### GET AUTH TOKEN
 
 2. Get token from authentication:
-   - In Postman USE THIS ENDPOINT:
+   - In Postman use this endpoint:
        ```sh
-     - http://127.0.0.1:8000/api/v1/token/login/
+      http://127.0.0.1:8000/api/v1/token/login/
        ```
         Make POST request and take auth_token from login. Write your super user  email and password in POSTMAN -> Body -> formatdata/raw/json
         
-
-
-
-
-
 ### CHECK AUTHENTICATION SUCCESSFULY
 
 3. Verify that the authentication was successful:
-   - In POSTMAN USE THIS ENDPOINT:
+   - In Postman use this endpoint:
        ```sh
-     - http://127.0.0.1:8000/api/v1/authentication/checker/
+      http://127.0.0.1:8000/api/v1/authentication/checker/
        ```
-     - Make GET request and use "auth_token" from login in this endpoint. "Headers -> KEY: Authorization -> VALUE: Token {{token}}". If authentication is successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided"
-     - Also need to write super user data in " Body -> formatdata/raw/json". Required fields are: "Email", "Username", "First Name", "Last Name", "Password"
+      Make GET request and use "auth_token" from login in this endpoint. "Headers -> KEY: Authorization -> VALUE: Token {{token}}". If authentication is successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided"
+      Also need to write super user data in " Body -> formatdata/raw/json". Required fields are: "Email", "Username", "First Name", "Last Name", "Password"
 
 ### CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
 
