@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "15978354-916c-4426-9ad4-d5079afc0bd2",
+		"name": "Reservations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/token/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL ROOMS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"title\": \"Room  (1)\",\r\n        \"description\": \"Room 1 is modern and have a lot of space for employees.\",\r\n        \"room_number\": \"5\",\r\n        \"capacity\": \"25\"\r\n    },",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/rooms/all/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"rooms",
+						"all",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL RESERVATIONS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"title\": \"March Conference\",\r\n        \"external\": true,\r\n        \"date_from\": \"2021-03-18T23:40:36Z\",\r\n        \"date_to\": \"2021-03-19T23:40:38Z\",\r\n        \"organizer\": 7,\r\n        \"room\": 4,\r\n        \"employees\": [\r\n            2\r\n        ]\r\n    },"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/reservations/all/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservations",
+						"all",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ROOM RESERVATIONS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/reservations/room/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservations",
+						"room",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE RESERVATION",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"title\": \"Createe TEST Conference\",\r\n        \"external\": true,\r\n        \"date_from\": \"2021-03-18T23:40:36Z\",\r\n        \"date_to\": \"2021-03-19T23:40:38Z\",\r\n        \"organizer\": 1,\r\n        \"room\": 1,\r\n        \"employees\": [\r\n            1\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/create/reservation/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"create",
+						"reservation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CANCEL RESERVATIONS",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/reservation/delete/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservation",
+						"delete",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 1efe2443b2ae9b73f42b85c81f96aba87a5bec7b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/token/logout/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
