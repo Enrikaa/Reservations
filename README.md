@@ -2,7 +2,7 @@
 
 > This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
 
-_Created by:_**Enrika Vyšniauskaitė**
+_Created by: _**Enrika Vyšniauskaitė**
 
 ### TECHNOLOGIES
    * Python
