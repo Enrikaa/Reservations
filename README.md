@@ -31,10 +31,7 @@
        ```sh
       http://127.0.0.1:8000/api/v1/users/
         ```
-      Write your super user data in POSTMAN -> Body -> formatdata/raw/json
-
-
-
+     > Write your super user data in POSTMAN -> Body -> formatdata/raw/json
 
 
 
