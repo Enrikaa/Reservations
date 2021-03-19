@@ -4,23 +4,30 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
+
+# Docker
 class Post(models.Model):
+
     title = models.CharField(max_length=250)
     content = models.TextField()
 
     def __str__(self):
         return self.title
 
+
 class User(AbstractUser):
-    email = models.EmailField(verbose_name="email", max_length=255, unique=True)
-    phone = models.CharField(null=True, max_length=255)
-    REQUIRED_FIELDS = ["username", "phone", "first_name", "last_name", "password"]
+
+    email = models.EmailField(verbose_name="email",
+                              max_length=255, unique=True)
+    REQUIRED_FIELDS = ["username", "first_name", "last_name", "password"]
     USERNAME_FIELD = "email"
 
     def get_username(self):
         return self.email
 
+
 class MeetingRoom(models.Model):
+
     title = models.CharField(max_length=150)
     description = models.TextField()
     room_number = models.CharField(max_length=16, unique=True)
@@ -31,6 +38,7 @@ class MeetingRoom(models.Model):
 
 
 class Reservation(models.Model):
+
     title = models.CharField(max_length=150)
     organizer = models.ForeignKey(
         User, related_name="organized_reservations", on_delete=models.CASCADE

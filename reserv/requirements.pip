@@ -1,4 +1,0 @@
-Django==3.0.6
-djangorestframework==3.10.3
-psycopg
-djoser

@@ -13,20 +13,16 @@ class UserCreateSerializer(UserCreateSerializer):
             "password",
             "first_name",
             "last_name",
-            "phone",
         )
-        # read_only_fields = ("id",)
 
 
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = "__all__"
-        # read_only_fields = ("id",)
 
 
 class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetingRoom
         fields = "__all__"
-        # read_only_fields = ("id",)

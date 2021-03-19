@@ -16,9 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# from meetings.views import RoomView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/meetings/", include("meetings.urls")),
+    path("api/v1/", include("meetings.urls")),
 ]
