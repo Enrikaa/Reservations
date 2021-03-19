@@ -13,7 +13,7 @@
 
 ### SETUP
 
-Run the project with Docker
+Run the project with Docker:
  ```sh
 docker-compose up --build
 ```
