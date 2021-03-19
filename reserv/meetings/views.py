@@ -25,15 +25,6 @@ from rest_framework.exceptions import NotFound
 # Check if user is authenticated
 
 
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def restricted(request, *args, **kwargs):
-
-    return Response(
-        data="Information just for logged in Users", status=status.HTTP_200_OK
-    )
-
-
 # Get all rooms
 class RoomsAll(APIView):
     def get(self, request):

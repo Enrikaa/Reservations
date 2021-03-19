@@ -17,8 +17,7 @@ class Post(models.Model):
 
 class User(AbstractUser):
 
-    email = models.EmailField(verbose_name="email",
-                              max_length=255, unique=True)
+    email = models.EmailField(verbose_name="email", max_length=255, unique=True)
     REQUIRED_FIELDS = ["username", "first_name", "last_name", "password"]
     USERNAME_FIELD = "email"
 

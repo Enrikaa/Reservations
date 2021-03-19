@@ -7,20 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meetings', '0002_post'),
+        ("meetings", "0002_post"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='reservation',
-            name='employess_list',
+            model_name="reservation",
+            name="employess_list",
         ),
         migrations.AddField(
-            model_name='reservation',
-            name='employees',
+            model_name="reservation",
+            name="employees",
             field=models.ManyToManyField(to=settings.AUTH_USER_MODEL),
         ),
         migrations.DeleteModel(
-            name='Employee',
+            name="Employee",
         ),
     ]
