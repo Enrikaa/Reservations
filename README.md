@@ -57,29 +57,29 @@
 
 4. Check all existing rooms:
 
-   - In POSTMAN USE THIS ENDPOINT:
+   - In Postman use this endpoint:
        ```sh
-     - http://127.0.0.1:8000/api/v1/rooms/all/
+      http://127.0.0.1:8000/api/v1/rooms/all/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make GET request and check all existing rooms
+      Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+      Make GET request and check all existing rooms
 
 5. Check all existing reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/reservations/all/
+      http://127.0.0.1:8000/api/v1/reservations/all/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make GET request and check all existing reservations
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+       Make GET request and check all existing reservations
 
 6. Check reservation by id:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/reservation/26/
+      http://127.0.0.1:8000/api/v1/reservation/26/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make GET request and check reservation details by reservation id
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+       Make GET request and check reservation details by reservation id
 
 ### GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
 
@@ -87,28 +87,28 @@
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/reservations/room/2/
+      http://127.0.0.1:8000/api/v1/reservations/room/2/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make GET request and check meeting room reservations
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+       Make GET request and check meeting room reservations
 
 8. Create reservation:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/create/reservation/
+      http://127.0.0.1:8000/api/v1/create/reservation/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make POST request and create reservation
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+       Make POST request and create reservation
 
 9. Cancel reservation
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/reservation/delete/27/
+      http://127.0.0.1:8000/api/v1/reservation/delete/27/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make DELETE request and delete reservation by id
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
+       Make DELETE request and delete reservation by id
 
 ### LOGOUT
 
@@ -116,10 +116,10 @@
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
-     - http://127.0.0.1:8000/api/v1/token/logout/
+      http://127.0.0.1:8000/api/v1/token/logout/
        ```
-     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-     - Make POST request and logout
+       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+       Make POST request and logout
 
 
 
