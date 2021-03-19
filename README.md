@@ -2,8 +2,6 @@
 
 > This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
 
-#### Created by: **Enrika Vyšniauskaitė**
-
 ### TECHNOLOGIES
    * Python
    * Django
@@ -24,7 +22,7 @@
 
 ### CREATE SUPER USER AND TAKE AUTH_TOKEN
 
-3. Create super user (three options: Termina, POSTMAN, Django rest framework):
+1. Create super user (three options: Termina, POSTMAN, Django rest framework):
    - Terminal:
      - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
    - POSTMAN:
@@ -34,14 +32,14 @@
      - Write your super user data in POSTMAN -> Body -> formatdata/raw/json
    -  Django REST framework
 
-4. Get token from authentication:
+2. Get token from authentication:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/token/login/
        ```
      - Make POST request and take auth_token from login
 
-5. Verify that the authentication was successful:
+3. Verify that the authentication was successful:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/authentication/checker/
@@ -51,7 +49,7 @@
 
 ### CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
 
-6. Check all existing rooms:
+4. Check all existing rooms:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -60,7 +58,7 @@
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check all existing rooms
 
-7. Check all existing reservations:
+5. Check all existing reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -69,7 +67,7 @@
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check all existing reservations
 
-8. Check reservation by id:
+6. Check reservation by id:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/reservation/26/
@@ -79,7 +77,7 @@
 
 ### GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
 
-9. Get meeting room reservations:
+7. Get meeting room reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -88,7 +86,7 @@
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check meeting room reservations
 
-10. Create reservation:
+8. Create reservation:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -97,7 +95,7 @@
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make POST request and create reservation
 
-11. Cancel reservation
+9. Cancel reservation
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
