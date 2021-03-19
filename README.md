@@ -53,8 +53,7 @@
       Make GET request and use "auth_token" from login in this endpoint. "Headers -> KEY: Authorization -> VALUE: Token {{token}}". If authentication is successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided"
       Also need to write super user data in " Body -> formatdata/raw/json". Required fields are: "Email", "Username", "First Name", "Last Name", "Password"
 
-### CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
-
+### CHECK ALL EXISTING ROOMS
 4. Check all existing rooms:
 
    - In Postman use this endpoint:
@@ -64,6 +63,7 @@
       Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
       Make GET request and check all existing rooms
 
+### CHECK ALL EXISTING RESERVATIONS
 5. Check all existing reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
@@ -73,6 +73,7 @@
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make GET request and check all existing reservations
 
+### CHECK RESERVATION BY ID
 6. Check reservation by id:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -81,8 +82,7 @@
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make GET request and check reservation details by reservation id
 
-### GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
-
+### GET MEETING ROOM RESERVATIONS
 7. Get meeting room reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
@@ -91,7 +91,8 @@
        ```
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make GET request and check meeting room reservations
-
+       
+### CREATE RESERVATION
 8. Create reservation:
 
    - In POSTMAN USE THIS ENDPOINT:
@@ -101,6 +102,7 @@
        Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{ token }}"
        Make POST request and create reservation
 
+### CANCEL RESERVATION
 9. Cancel reservation
 
    - In POSTMAN USE THIS ENDPOINT:
@@ -111,8 +113,7 @@
        Make DELETE request and delete reservation by id
 
 ### LOGOUT
-
-10. Cancel reservation
+10. Logout and destroy token
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
