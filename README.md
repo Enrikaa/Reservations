@@ -29,7 +29,9 @@ _Created by:_**Enrika Vyšniauskaitė**
    - First option - terminal:
      - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
    - Second option - POSTMAN:
+     ```sh
      - http://127.0.0.1:8000/api/v1/users/
+      ```
      - You can write your super user data in POSTMAN -> Body -> formatdata/raw/json
    - Third option - Django REST framework:
 
