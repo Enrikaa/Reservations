@@ -1,17 +1,16 @@
 # Overview
 
->This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
+> This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
 
 _Created by:_**Enrika Vyšniauskaitė**
 
-Technologies:
-
-Python
-Django
-Django REST framework
-Djoser
-Postman
-PostgreSQL
+## Technologies:
+   * Python
+   * Django
+   * Django REST framework
+   * Djoser
+   * Postman
+   * PostgreSQL
 
 # Setup
 
@@ -21,9 +20,7 @@ PostgreSQL
 2. Install requirements.txt
    pip install -r requirements.txt
 
-Everything can be checked in POSTMAN and Django Rest Framework. Below are instructions to help test the API in a POSTMAN.
-
-First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
+> Everything can be checked in POSTMAN and Django Rest Framework. Below are instructions to help test the API in a POSTMAN.First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
 
 #CREATE SUPER USER AND TAKE AUTH_TOKEN
 
