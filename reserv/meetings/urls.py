@@ -6,8 +6,7 @@ urlpatterns = [
     # Authentication
     path("", include("djoser.urls")),
     path("", include("djoser.urls.authtoken")),
-    # Create superuser
-    path("users/", include("djoser.urls")),
+
     # Check all rooms
     path("rooms/all/", RoomsAll.as_view()),
     # Check all reservations details
