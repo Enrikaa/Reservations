@@ -22,14 +22,16 @@
 
 ### CREATE SUPER USER
 
-* Create super user (three options: Termina, POSTMAN, Django rest framework):
+* Create super user (three options: TerminaL, POSTMAN, Django rest framework):
    - Terminal:
-     - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
+       ```sh
+     python manage.py createsuperuser
+       ```
    - POSTMAN:
        ```sh
-     - http://127.0.0.1:8000/api/v1/users/
+      http://127.0.0.1:8000/api/v1/users/
         ```
-     - Write your super user data in POSTMAN -> Body -> formatdata/raw/json
+      Write your super user data in POSTMAN -> Body -> formatdata/raw/json
    -  Django REST framework
 
 ### GET AUTH TOKEN
