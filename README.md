@@ -9,6 +9,7 @@
    * Djoser
    * Postman
    * PostgreSQL
+   * Docker
 
 ### SETUP
 
