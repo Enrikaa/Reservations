@@ -18,7 +18,7 @@
 2. Install requirements.txt
    pip install -r requirements.txt
 
-> Everything can be checked in POSTMAN and Django Rest Framework. Below are instructions to help test the API in a POSTMAN. First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
+> Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
 
 ### CREATE SUPER USER
 
@@ -31,7 +31,7 @@
        ```sh
       http://127.0.0.1:8000/api/v1/users/
         ```
-        Write your super user data in POSTMAN -> Body -> formatdata/raw/json
+        Write your super user data in Postman -> Body -> formatdata/raw/json
 
 
 ### GET AUTH TOKEN
