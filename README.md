@@ -24,27 +24,24 @@ _Created by:_**Enrika Vyšniauskaitė**
 
 #CREATE SUPER USER AND TAKE AUTH_TOKEN
 
-1. Create super user:
-
-   - First option - terminal:
+3. Create super user (three options: Termina, POSTMAN, Django rest framework):
+   - Terminal:
      - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
-   - Second option - POSTMAN:
-     ```sh
+   - POSTMAN:
+       ```sh
      - http://127.0.0.1:8000/api/v1/users/
-      ```
-     - You can write your super user data in POSTMAN -> Body -> formatdata/raw/json
-   - Third option - Django REST framework:
+        ```
+     - Write your super user data in POSTMAN -> Body -> formatdata/raw/json
+   -  Django REST framework
 
-2. Get token from authentication:
-
+4. Get token from authentication:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/token/login/
        ```
      - Make POST request and take auth_token from login
 
-3. Verify that the authentication was successful:
-
+5. Verify that the authentication was successful:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/authentication/checker/
@@ -52,9 +49,9 @@ _Created by:_**Enrika Vyšniauskaitė**
      - Make GET request and use "auth_token" from login in this endpoint. "Headers -> KEY: Authorization -> VALUE: Token {{token}}". If authentication is successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided"
      - Also need to write super user data in " Body -> formatdata/raw/json". Required fields are: "Email", "Username", "First Name", "Last Name", "Password"
 
-#CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
+### CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
 
-4. Check all existing rooms:
+6. Check all existing rooms:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -63,45 +60,44 @@ _Created by:_**Enrika Vyšniauskaitė**
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check all existing rooms
 
-5. Check all existing reservations:
+7. Check all existing reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
-     ```sh
+       ```sh
      - http://127.0.0.1:8000/api/v1/reservations/all/
-     ```
+       ```
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check all existing reservations
 
-6. Check reservation by id:
-
+8. Check reservation by id:
    - In POSTMAN USE THIS ENDPOINT:
-      ```sh
+       ```sh
      - http://127.0.0.1:8000/api/v1/reservation/26/
-     ```
+       ```
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check reservation details by reservation id
 
-#GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
+### GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
 
-7. Get meeting room reservations (check reservations by room id):
+9. Get meeting room reservations:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/reservations/room/2/
-     ```
+       ```
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make GET request and check meeting room reservations
 
-8. Create reservation:
+10. Create reservation:
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/create/reservation/
-     ```
+       ```
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make POST request and create reservation
 
-9. Cancel reservation
+11. Cancel reservation
 
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
@@ -110,16 +106,19 @@ _Created by:_**Enrika Vyšniauskaitė**
      - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
      - Make DELETE request and delete reservation by id
 
-#LOGOUT
+### LOGOUT
 
-10. Logout
+10. Cancel reservation
 
-- In POSTMAN USE THIS ENDPOINT:
-  ```sh
-  - http://127.0.0.1:8000/api/v1/token/logout/
-  ```
-  - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
-  - Make POST request and logout
+   - In POSTMAN USE THIS ENDPOINT:
+       ```sh
+     - http://127.0.0.1:8000/api/v1/token/logout/
+       ```
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make POST request and logout
+
+
+
 
 # Docker
 
