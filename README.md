@@ -128,3 +128,9 @@
 # Docker
 
 - run: `docker-compose up --build`.
+
+
+
+## Contact
+Created by [@enrika](https://www.linkedin.com/in/enrika-vysniauskaite-10bba4196/) - feel free to contact me!
+
