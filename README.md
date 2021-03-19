@@ -13,10 +13,14 @@
 ### SETUP
 
 1. Create and activate a virtual environment (python version => 3.8)
+   ```sh
    pip install virtualenv
+   ```
 
 2. Install requirements.txt
+   ```sh
    pip install -r requirements.txt
+   ```
 
 > Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
 
