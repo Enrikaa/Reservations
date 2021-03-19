@@ -25,7 +25,7 @@
 * Create super user (three options: TerminaL, POSTMAN, Django rest framework):
    -  Terminal:
       ```sh
-     python manage.py createsuperuser
+      python manage.py createsuperuser
       ```
    -  Postman:
        ```sh
