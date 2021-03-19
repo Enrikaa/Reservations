@@ -34,15 +34,18 @@
         Write your super user data in POSTMAN -> Body -> formatdata/raw/json
 
 
-
 ### GET AUTH TOKEN
 
-* Get token from authentication:
-   - In POSTMAN USE THIS ENDPOINT:
+2. Get token from authentication:
+   - In Postman USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/token/login/
        ```
-     - Make POST request and take auth_token from login
+        Make POST request and take auth_token from login
+
+
+
+
 
 ### CHECK AUTHENTICATION SUCCESSFULY
 
