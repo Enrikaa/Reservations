@@ -4,75 +4,105 @@ This is a internal services which can get meeting room reservations, create rese
 
 _Created by:_**Enrika Vyšniauskaitė**
 
-#Requirements
+Technologies:
 
-- Python => 3.8
+Python
+Django
+Django REST framework
+Djoser
+Postman
+PostgreSQL
 
 # Setup
 
 1. Create and activate a virtual environment (python version => 3.8)
-   virtualenv env -p python
-   source env/bin/activate
-2. Install pip libraries
-   pip install -r requirements.pip
+   pip install virtualenv
 
-#How to run
+2. Install requirements.txt
+   pip install -r requirements.txt
 
-To try reqruirements for implementation first needed to create SuperUser and make login from which will receive "auth_token". Having this key gives access to everyone API endpoint.
+Everything can be checked in POSTMAN and Django Rest Framework. Below are instructions to help test the API in a POSTMAN.
 
-1. Create SuperUser:
+First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
 
-   - http://127.0.0.1:8000/api/v1/users/
-   - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
-   - or create SuperUser in Django REST framework.
+#CREATE SUPER USER AND TAKE AUTH_TOKEN
 
-2. Login:
+1. Create super user:
 
-   - http://127.0.0.1:8000/api/v1/token/login/
-   - Take auth_token from login
+   - First option - terminal:
+     - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
+   - Second option - POSTMAN:
+     - http://127.0.0.1:8000/api/v1/users/
+     - You can write your super user data in POSTMAN -> Body -> formatdata/raw/json
+   - Third option - Django REST framework:
+
+2. Get token from authentication:
+
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/token/login/
+     - Make POST request and take auth_token from login
 
 3. Verify that the authentication was successful:
 
-   - http://127.0.0.1:8000/api/v1/authentication/checker/
-   - Put "auth_token" in POSTMAN -> Headers. In KEY field should be: "Authorization" and in KEY field: "Token {{auth_token}}". If successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided".
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/authentication/checker/
+     - Make GET request and use "auth_token" from login in this endpoint. "Headers -> KEY: Authorization -> VALUE: Token {{token}}". If authentication is successful, you should see "Information just for logged in Users", if not - "Authentication credentials were not provided"
+     - Also need to write super user data in " Body -> formatdata/raw/json". Required fields are: "Email", "Username", "First Name", "Last Name", "Password"
 
-#Additional steps to create reservations:
+#CHECK ALL EXISTING ROOMS, RESERVATIONS AND RESERVATIONS BY ID
 
 4. Check all existing rooms:
 
-   - http://127.0.0.1:8000/api/v1/rooms/all/
-   - Put "auth_token"in the POSTMAN -> Headers.
-   - Or check all existing rooms in Django REST framework.
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/rooms/all/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make GET request and check all existing rooms
 
 5. Check all existing reservations:
 
-   - http://127.0.0.1:8000/api/v1/reservations/all/
-   - Put "auth_token"in the POSTMAN -> Headers.
-   - Or check all existing reservations in Django REST framework.
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/reservations/all/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make GET request and check all existing reservations
 
 6. Check reservation by id:
 
-   - http://127.0.0.1:8000/api/v1/reservation/14/
-   - Put "auth_token"in the POSTMAN -> Headers.
-   - Or check reservation by id in Django REST framework.
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/reservation/26/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make GET request and check reservation details by reservation id
 
-#"Reservation" tasks implementation:
+#GET MEETING ROOM RESERVATIONS, CREATE RESERVATION, CANCEL RESERVATION
 
 7. Get meeting room reservations (check reservations by room id):
 
-   - http://127.0.0.1:8000/api/v1/reservations/room/2/
-   - Put "auth_token"in the POSTMAN -> Headers.
-   - Or get room reservations in Django REST framework.
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/reservations/room/2/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make GET request and check meeting room reservations
 
 8. Create reservation:
 
-   - http://127.0.0.1:8000/api/v1/create/reservation/
-   - Put "auth_token"in the POSTMAN -> Headers.
-   - Or create reservation in Django REST framework.
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/create/reservation/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make POST request and create reservation
 
 9. Cancel reservation
-   - In API endpoint you need to write reservetion and reservation id which you want to delete
-   - http://127.0.0.1:8000/api/v1/reservation/delete/27/
+
+   - In POSTMAN USE THIS ENDPOINT:
+     - http://127.0.0.1:8000/api/v1/reservation/delete/27/
+     - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+     - Make DELETE request and delete reservation by id
+
+#LOGOUT
+
+10. Logout
+
+- In POSTMAN USE THIS ENDPOINT:
+  - http://127.0.0.1:8000/api/v1/token/logout/
+  - Use "auth_token"in the "Headers -> KEY: Authorization -> VALUE: Token {{token}}"
+  - Make POST request and logout
 
 # Docker
 
