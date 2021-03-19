@@ -1,10 +1,10 @@
-# Overview
+# OVERVIEW
 
 > This is a internal services which can get meeting room reservations, create reservation, cancel reservation.
 
 _Created by:_**Enrika Vyšniauskaitė**
 
-### Technologies:
+### TECHNOLOGIES
    * Python
    * Django
    * Django REST framework
@@ -12,7 +12,7 @@ _Created by:_**Enrika Vyšniauskaitė**
    * Postman
    * PostgreSQL
 
-### Setup
+### SETUP
 
 1. Create and activate a virtual environment (python version => 3.8)
    pip install virtualenv
