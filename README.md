@@ -20,9 +20,9 @@
 
 > Everything can be checked in POSTMAN and Django Rest Framework. Below are instructions to help test the API in a POSTMAN.First needed to create super user and make login. From login will receive "auth_token". Having this key gives access to everyone API endpoint.
 
-### CREATE SUPER USER AND TAKE AUTH_TOKEN
+### CREATE SUPER USER
 
-1. Create super user (three options: Termina, POSTMAN, Django rest framework):
+* Create super user (three options: Termina, POSTMAN, Django rest framework):
    - Terminal:
      - python manage.py createsuperuser ("Email", "Username", "First Name", "Last Name", "Password")
    - POSTMAN:
@@ -32,12 +32,16 @@
      - Write your super user data in POSTMAN -> Body -> formatdata/raw/json
    -  Django REST framework
 
-2. Get token from authentication:
+### GET AUTH TOKEN
+
+* Get token from authentication:
    - In POSTMAN USE THIS ENDPOINT:
        ```sh
      - http://127.0.0.1:8000/api/v1/token/login/
        ```
      - Make POST request and take auth_token from login
+
+### CHECK AUTHENTICATION SUCCESSFULY
 
 3. Verify that the authentication was successful:
    - In POSTMAN USE THIS ENDPOINT:
