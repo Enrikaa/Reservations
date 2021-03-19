@@ -4,7 +4,9 @@ from meetings.models import User, Reservation, MeetingRoom
 
 
 class TestLogin(TestCase):
+
     def setUp(self):
+
         self.email = "test@gmail.com"
         self.username = "Vysniaaaa"
         self.first_name = "Enrikaaaa"
@@ -41,7 +43,7 @@ class TestLogin(TestCase):
         assert response.status_code == 201
 
     def test_wrong_credentials_unable_login(self):
-        """  """
+        """ Test wrong credentials """
         login_data = {"email": "non_existing@gmail.com",
                       "password": "wrong_pass"}
         response = self.client.post(
