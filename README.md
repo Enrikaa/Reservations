@@ -13,7 +13,9 @@
 ### SETUP
 
 Run the project with Docker
-`docker-compose up --build`
+ ```sh
+docker-compose up --build
+```
 
 > Everything can be checked in Postman and Django Rest Framework. Below are instructions to help test the API in a Postman. First you need to Login to get Auth Token with default user: `admin@admin.com` and password: `admin`. From login you will receive "auth_token". This token gives access to every API endpoint.
 
