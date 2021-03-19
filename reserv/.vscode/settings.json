@@ -1,5 +1,5 @@
 {
     "python.pythonPath": "c:\\Users\\Enrika\\Desktop\\cloning\\Reservations\\env2\\Scripts\\python.exe",
+    "python.formatting.provider": "autopep8",
     "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
 }
