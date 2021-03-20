@@ -31,7 +31,7 @@ In your Postman import API endpoint collection fixture file named: `Reservations
   
  2. Run pytest inside container
  
-   ```sh
+    ```sh
      docker exec -it reserv_api_1 /bin/bash -c "pytest"
    ```
 
@@ -42,7 +42,7 @@ In your Postman import API endpoint collection fixture file named: `Reservations
        ```sh
       http://localhost:8000/api/v1/token/login/
        ```
-        Make POST request and take auth_token from login. Use default credentials username: `admin@admin.com` password: `admin`
+        Make POST request and take auth_token from login. Use default credentials email: `admin@admin.com` password: `admin`
         
 ### CHECK ALL EXISTING ROOMS
 2. Check all existing rooms:
