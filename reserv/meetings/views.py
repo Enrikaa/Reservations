@@ -1,22 +1,18 @@
 import json
 from django.utils import timezone
-from .models import Reservation, MeetingRoom
-from .serializers import (
-    ReservationSerializer,
-    MeetingRoomSerializer,
-)
+
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
-from rest_framework import status
-from rest_framework.authentication import (
-    SessionAuthentication,
-    TokenAuthentication,
-    BasicAuthentication,
-)
 from rest_framework.exceptions import NotFound
+
+from .models import Reservation, MeetingRoom
+from .serializers import (
+    ReservationSerializer,
+    MeetingRoomSerializer,
+)
 
 
 # Get all rooms
