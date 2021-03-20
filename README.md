@@ -27,13 +27,13 @@ In your Postman import API endpoint collection fixture file named: `Reservations
 1. Run docker containers
     ```sh
      docker-compose up
-   ```
+    ```
   
  2. Run pytest inside container
  
     ```sh
      docker exec -it reserv_api_1 /bin/bash -c "pytest"
-   ```
+    ```
 
 ### GET AUTH TOKEN
 
