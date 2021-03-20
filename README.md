@@ -22,6 +22,19 @@ docker-compose up --build
 
 In your Postman import API endpoint collection fixture file named: `Reservations.postman_collection.json`
 
+### RUNNING TESTS
+
+1. Run docker containers
+    ```sh
+     docker-compose up
+   ```
+  
+ 2. Run pytest inside container
+ 
+   ```sh
+     docker exec -it reserv_api_1 /bin/bash -c "pytest"
+   ```
+
 ### GET AUTH TOKEN
 
 1. Get token from authentication:
