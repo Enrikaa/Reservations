@@ -11,6 +11,8 @@ services:
       POSTGRES_DB: reservations
     networks:
       - default
+    volumes:
+      - dbdata:/var/lib/postgresql/data/
   api:
     build: .
     restart: on-failure
@@ -28,3 +30,6 @@ services:
     tty: true
     networks:
       - default
+
+volumes:
+  dbdata:
