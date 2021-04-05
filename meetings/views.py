@@ -1,4 +1,5 @@
 from django.utils import timezone
+import datetime
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, mixins
@@ -59,7 +60,17 @@ class CreateReservation(
     serializer_class = ReservationSerializer
 
     def post(self, request):
-        return self.create(request)
+        reservation_object = Reservation.objects.all()
+        cut_reservations_strings = []
+
+        for i in reservation_object:
+            cut_reservations_strings.append(str((i.date_from))[0:16])
+        request_data = request.data["date_from"][0:16]
+
+        if request_data in cut_reservations_strings:
+            raise NotFound(f"Can't create RESERVATION")
+        else:
+            return self.create(request)
 
 
 # Check reservation by id and delete it
