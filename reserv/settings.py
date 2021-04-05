@@ -71,7 +71,7 @@ DATABASES = {
         "NAME": "reservations",
         "USER": "postgres",
         "PASSWORD": "2051Enr",
-        "HOST": "localhost",
+        "HOST": "db",
         "PORT": "5432",
         "TEST": {
             "NAME": "mytestdatabase",
