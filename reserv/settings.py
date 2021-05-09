@@ -1,20 +1,15 @@
-
+from datetime import timedelta
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "w6*s7ri0k+-zti_xj3ll+3+nswy=8xj05k1)=(zcjyoh)#=yb@"
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -28,8 +23,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "meetings",
     "djoser",
+    "drf_yasg",
 ]
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -41,9 +36,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 ROOT_URLCONF = "reserv.urls"
-
 
 TEMPLATES = [
     {
@@ -61,16 +54,14 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = "reserv.wsgi.application"
-
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "reservations",
         "USER": "postgres",
-        "PASSWORD": "",
+        "PASSWORD": "2051Enr",
         "HOST": "db",
         "PORT": "5432",
         "TEST": {
@@ -78,7 +69,6 @@ DATABASES = {
         },
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -95,7 +85,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -106,29 +95,31 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ),
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.AllowAny",
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-
-# Going in app and finding User model
 AUTH_USER_MODEL = "meetings.User"
-DJOSER = {
-    "LOGIN_FIELD": "email",
-    "USER_CREATE_PASSWORD_RETYPE": True,
-    "SERIALIZERS": {
-        "user_create": "meetings.serializers.UserCreateSerializer",
-        "user": "meetings.serializers.UserCreateSerializer",
-    },
-}
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=8),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 STATIC_URL = "/static/"
+
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False,
+    "JSON_EDITOR": True,
+    "SECURITY_DEFINITIONS": {
+        "api_key": {"type": "apiKey", "in": "header", "name": "Authorization"}
+    },
+}
