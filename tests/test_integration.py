@@ -1,9 +1,11 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
-from meetings.models import User, Reservation, MeetingRoom
+from meetings.models import Users, Reservation, MeetingRoom
 
 
 class TestLogin(TestCase):
+
+    last_name: str
 
     def setUp(self):
 
@@ -14,8 +16,8 @@ class TestLogin(TestCase):
         self.password = "2051Enr2051Enre"
         self.re_password = "2051Enr2051Enre"
         self.client = APIClient()
-        self.user = User.objects.create_user(email=self.email, username=self.username,
-                                             first_name=self.first_name, last_name=self.last_name, password=self.password)
+        self.user = Users.objects.create_user(email=self.email, username=self.username,
+                                              first_name=self.first_name, last_name=self.last_name, password=self.password)
         self.room_1 = MeetingRoom.objects.create(
             title="Room", description="Room 12", room_number="2", capacity="25")
 

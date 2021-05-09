@@ -1,39 +1,62 @@
 from django.utils import timezone
-import datetime
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status, generics, mixins
-from rest_framework.views import APIView
+
+from rest_framework import filters
+from rest_framework import permissions, status
+from rest_framework import viewsets
 from rest_framework.exceptions import NotFound
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from .models import Reservation, MeetingRoom
-from .serializers import (
-    ReservationSerializer,
-    MeetingRoomSerializer,
-)
+from serializers import MeetingRoomSerializer, ReservationSerializer, \
+    UsersSerializer
 
-
-# Get all rooms
-class RoomsAll(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        room = MeetingRoom.objects.all()
-
-        all_rooms = MeetingRoomSerializer(room, many=True)
-        return Response(data=all_rooms.data)
+from .models import MeetingRoom, Reservation, User
 
 
-# Get all reservations
-class ReservationsAll(generics.ListAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = ReservationSerializer
+class IsOwnerFilterBackend(filters.BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        return queryset.filter(owner=request.user)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = UsersSerializer
+    queryset = User.objects.all()
+
+
+class RoomsAll(viewsets.ModelViewSet):
+    queryset = MeetingRoom.objects.all()
+    serializer_class = MeetingRoomSerializer
+
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy', 'list']:
+            self.permission_classes = [AllowAny, ]
+        elif self.action in ['create']:
+            self.permission_classes = [IsAuthenticated, ]
+        return super().get_permissions()
+
+
+class ReservationsAll(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+
+    def post(self, request):
+        reservation_object = Reservation.objects.all()
+        cut_reservations_strings = []
+        for i in reservation_object:
+            cut_reservations_strings.append(str((i.date_from))[0:16])
+        request_data = request.data["date_from"][0:16]
+        if request_data in cut_reservations_strings:
+            raise NotFound("Can't create RESERVATION")
+        else:
+            return self.create(request)
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
 
 
-# Get meeting room reservations
 class ReservationByRoom(APIView):
-    permission_classes = [IsAuthenticated]
 
     def get_object(self, room_id):
         try:
@@ -41,41 +64,15 @@ class ReservationByRoom(APIView):
         except MeetingRoom.DoesNotExist:
             raise NotFound(f"The meeting room id: {room_id} was not found.")
 
-    # Get specific meeting room reservations
     def get(self, request, room_id):
         room = self.get_object(room_id=room_id)
-        # Additional factor: setting to not show past reservations
         reservations = room.reservations.filter(date_from__gte=timezone.now())
-
         all_reservations = ReservationSerializer(reservations, many=True)
         return Response(data=all_reservations.data)
 
 
-# Create reservation
-class CreateReservation(
-    generics.GenericAPIView,
-    mixins.CreateModelMixin,
-):
-    permission_classes = [IsAuthenticated]
-    serializer_class = ReservationSerializer
-
-    def post(self, request):
-        reservation_object = Reservation.objects.all()
-        cut_reservations_strings = []
-
-        for i in reservation_object:
-            cut_reservations_strings.append(str((i.date_from))[0:16])
-        request_data = request.data["date_from"][0:16]
-
-        if request_data in cut_reservations_strings:
-            raise NotFound(f"Can't create RESERVATION")
-        else:
-            return self.create(request)
-
-
-# Check reservation by id and delete it
 class DeleteReservation(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_reservation(self, reservation_id):
         try:
@@ -86,7 +83,6 @@ class DeleteReservation(APIView):
             )
 
     def get(self, request, reservation_id):
-        # Take data from above function
         rooms = self.get_reservation(reservation_id=reservation_id)
         serializer = ReservationSerializer(rooms)
         return Response(serializer.data)

@@ -1,20 +1,26 @@
-from django.urls import path, include
-from meetings import views
-from .views import *
+from django.urls import include, path
+
+from rest_framework import routers
+
+from rest_framework_simplejwt.views import TokenObtainPairView, \
+    TokenRefreshView
+
+from .views import DeleteReservation, ReservationByRoom, \
+    ReservationsAll, RoomsAll, UserViewSet
+
+router = routers.DefaultRouter()
+router.register('users', UserViewSet)
+router.register('rooms', RoomsAll)
+router.register('reservations', ReservationsAll)
+urlpatterns = router.urls
 
 urlpatterns = [
-    # Authentication
-    path("", include("djoser.urls")),
-    path("", include("djoser.urls.authtoken")),
+    path('', include(router.urls)),
 
-    # Check all rooms
-    path("rooms/all/", RoomsAll.as_view()),
-    # Check all reservations details
-    path("reservations/all/", ReservationsAll.as_view()),
-    # Delete reservation
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
     path("reservation/delete/<int:reservation_id>/", DeleteReservation.as_view()),
-    # Reservations by room id
     path("reservations/room/<int:room_id>/", ReservationByRoom.as_view()),
-    # Create reservation
-    path("create/reservation/", CreateReservation.as_view()),
+
 ]
