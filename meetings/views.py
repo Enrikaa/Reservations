@@ -3,7 +3,7 @@ from django.utils import timezone
 from rest_framework import filters
 from rest_framework import permissions, status
 from rest_framework import viewsets
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -24,6 +24,13 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = User.objects.all()
 
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy', 'list']:
+            self.permission_classes = [AllowAny, ]
+        elif self.action in ['create']:
+            self.permission_classes = [IsAuthenticated, ]
+        return super().get_permissions()
+
 
 class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()
@@ -35,6 +42,9 @@ class RoomsAll(viewsets.ModelViewSet):
         elif self.action in ['create']:
             self.permission_classes = [IsAuthenticated, ]
         return super().get_permissions()
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
 
 
 class ReservationsAll(viewsets.ModelViewSet):

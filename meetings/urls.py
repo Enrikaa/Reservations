@@ -9,9 +9,9 @@ from .views import DeleteReservation, ReservationByRoom, \
     ReservationsAll, RoomsAll, UserViewSet
 
 router = routers.DefaultRouter()
-router.register('users', UserViewSet)
-router.register('rooms', RoomsAll)
-router.register('reservations', ReservationsAll)
+router.register('users', UserViewSet, basename='users')
+router.register('rooms', RoomsAll, basename='rooms')
+router.register('reservations', ReservationsAll, basename='reservations')
 urlpatterns = router.urls
 
 urlpatterns = [
@@ -20,7 +20,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    path("reservation/delete/<int:reservation_id>/", DeleteReservation.as_view()),
+    path("reservation/delete/<int:reservation_id>/", DeleteReservation.as_view(), name='reservation-delete'),
     path("reservations/room/<int:room_id>/", ReservationByRoom.as_view()),
 
 ]

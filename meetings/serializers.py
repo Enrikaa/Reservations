@@ -1,9 +1,12 @@
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from .models import MeetingRoom, Reservation, User
 
 
 class UsersSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = (
@@ -11,8 +14,9 @@ class UsersSerializer(serializers.ModelSerializer):
             "email",
             "username",
             "password",
+            "first_name",
             "last_name",
-            "is_staff"
+            "is_staff",
         )
 
     def create(self, validated_data):
@@ -40,6 +44,13 @@ class ReservationSerializer(serializers.ModelSerializer):
                   "date_to",
                   ]
         read_only_fields = ('created_by',)
+
+    def validate_title(self, data):
+        if 'title' == '':
+            raise ValidationError(
+                {'password': 'password_no_upper'},
+            )
+        return data
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
