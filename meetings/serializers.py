@@ -29,6 +29,7 @@ class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetingRoom
         fields = "__all__"
+        read_only_fields = ('created_by',)
 
 
 class ReservationSerializer(serializers.ModelSerializer):
