@@ -74,7 +74,7 @@
       <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: tests.test_one_route">
+  <component name="RunManager" selected="Django Server.runserver">
     <configuration name="Test: meetings" type="DjangoTestsConfigurationType">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -347,7 +347,10 @@
       <workItem from="1620854071857" duration="1921000" />
       <workItem from="1620934617210" duration="11555000" />
       <workItem from="1620974874617" duration="18872000" />
-      <workItem from="1621086392954" duration="5276000" />
+      <workItem from="1621086392954" duration="7714000" />
+      <workItem from="1621154699189" duration="6150000" />
+      <workItem from="1621165281465" duration="72000" />
+      <workItem from="1621165497980" duration="7985000" />
     </task>
     <servers />
   </component>

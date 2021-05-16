@@ -21,28 +21,35 @@ class IsOwnerFilterBackend(filters.BaseFilterBackend):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    # permission_classes = (permissions.IsAuthenticated,)
     serializer_class = UsersSerializer
     queryset = User.objects.all()
+    lookup_field = 'pk'
 
-    # def get_permissions(self):
-    #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
-    #         self.permission_classes = [AllowAny, ]
-    #     elif self.action in ['create']:
-    #         self.permission_classes = [IsAuthenticated, ]
-    #     return super().get_permissions()
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy', 'list']:
+            self.permission_classes = [AllowAny, ]
+        elif self.action in ['create']:
+            self.permission_classes = [IsAuthenticated, ]
+        return super().get_permissions()
+
+    def get_serializer_context(self):
+        context = super(UserViewSet, self).get_serializer_context()
+        context.update({'request': 'bar'})
+        print(context)
+        return context
 
 
 class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()
     serializer_class = MeetingRoomSerializer
+    lookup_field = 'id'
 
-    # def get_permissions(self):
-    #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
-    #         self.permission_classes = [AllowAny, ]
-    #     elif self.action in ['create']:
-    #         self.permission_classes = [IsAuthenticated, ]
-    #     return super().get_permissions()
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy', 'list']:
+            self.permission_classes = [AllowAny, ]
+        elif self.action in ['create']:
+            self.permission_classes = [IsAuthenticated, ]
+        return super().get_permissions()
 
 
 class ReservationsAll(viewsets.ModelViewSet):
@@ -73,7 +80,7 @@ class ReservationsAll(viewsets.ModelViewSet):
 
 
 class DeleteReservation(APIView):
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_reservation(self, reservation_id):
         try:

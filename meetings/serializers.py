@@ -24,6 +24,12 @@ class UsersSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['request'] = self.context['request']
+        return representation
+
+
 
 class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,6 +39,7 @@ class MeetingRoomSerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Reservation
         fields = ["id",
@@ -57,4 +64,8 @@ class ReservationSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         if instance.created_by:
             representation['created_by'] = instance.created_by.email
+
+        representation['foo'] = self.context['foo'].user
+
         return representation
+
