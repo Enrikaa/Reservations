@@ -34,8 +34,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_serializer_context(self):
         context = super(UserViewSet, self).get_serializer_context()
-        context.update({'request': 'bar'})
         print(context)
+        print(self.request)
+        context.update({'request': 'request.data'})
         return context
 
 

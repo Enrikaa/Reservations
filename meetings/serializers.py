@@ -6,7 +6,6 @@ from .models import MeetingRoom, Reservation, User
 
 
 class UsersSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
         fields = (
@@ -30,7 +29,6 @@ class UsersSerializer(serializers.ModelSerializer):
         return representation
 
 
-
 class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetingRoom
@@ -39,7 +37,6 @@ class MeetingRoomSerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Reservation
         fields = ["id",
@@ -65,7 +62,4 @@ class ReservationSerializer(serializers.ModelSerializer):
         if instance.created_by:
             representation['created_by'] = instance.created_by.email
 
-        representation['foo'] = self.context['foo'].user
-
         return representation
-
