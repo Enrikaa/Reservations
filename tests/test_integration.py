@@ -29,9 +29,14 @@ class TestUsers(BaseTestCase):
 
 class TestReservations(BaseTestCase):
 
-    def test_get_reservations(self):
+    def test_all_get_reservations(self):
         self.client.force_authenticate(self.user)
         response = self.client.get(reverse("reservations-list"))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_reservations(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(reverse("reservations-detail", args=[self.room.pk]))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_reservation(self):
@@ -76,7 +81,7 @@ class TestReservations(BaseTestCase):
     def test_can_delete_reservation(self):
         self.client.force_authenticate(self.user)
         response = self.client.delete(
-            f"/api/v1/reservation/delete/{self.reservations.id}/")
+            f"/api/v1/reservation/delete/{self.reservation.id}/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
 
@@ -100,7 +105,7 @@ class TestAuthToken(BaseTestCase):
 
     def test_get_auth_wrong_token(self):
         data = {"email": 'a',
-                "password": 'a'}
+                "password": 'b'}
         self.client.force_authenticate(self.user)
         response = self.client.post(reverse("token_obtain_pair"), data=data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "meetings",
     "djoser",
     "drf_yasg",
+    "django_filters"
 ]
 
 MIDDLEWARE = [

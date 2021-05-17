@@ -20,7 +20,4 @@ class BaseTestCase(TestCase):
                                              is_staff=self.is_staff
                                              )
         self.room = baker.make(MeetingRoom)
-        self.reservations = Reservation.objects.create(title="Reservation", organizer=self.user, room=self.room,
-                                                       external=True,
-                                                       date_from="2023-05-13T19:39:34Z", date_to="2023-06-13T19:39:36Z")
-        self.user_wrong = baker.make(User)
+        self.reservation = baker.make(Reservation, organizer=self.user, room=self.room, _fill_optional=['description'])

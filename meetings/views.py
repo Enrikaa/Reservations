@@ -1,4 +1,5 @@
 from django.utils import timezone
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import filters
 from rest_framework import permissions, status
@@ -15,27 +16,20 @@ from .models import MeetingRoom, Reservation, User
 from rest_framework.decorators import action
 
 
-class IsOwnerFilterBackend(filters.BaseFilterBackend):
-    def filter_queryset(self, request, queryset, view):
-        return queryset.filter(owner=request.user)
-
-
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = User.objects.all()
     lookup_field = 'pk'
 
-    def get_permissions(self):
-        if self.action in ['update', 'partial_update', 'destroy', 'list']:
-            self.permission_classes = [AllowAny, ]
-        elif self.action in ['create']:
-            self.permission_classes = [IsAuthenticated, ]
-        return super().get_permissions()
+    # def get_permissions(self):
+    #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
+    #         self.permission_classes = [AllowAny, ]
+    #     elif self.action in ['create']:
+    #         self.permission_classes = [IsAuthenticated, ]
+    #     return super().get_permissions()
 
     def get_serializer_context(self):
         context = super(UserViewSet, self).get_serializer_context()
-        print(context)
-        print(self.request)
         context.update({'request': 'request.data'})
         return context
 
@@ -44,25 +38,29 @@ class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()
     serializer_class = MeetingRoomSerializer
     lookup_field = 'id'
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['room_number']
 
-    def get_permissions(self):
-        if self.action in ['update', 'partial_update', 'destroy', 'list']:
-            self.permission_classes = [AllowAny, ]
-        elif self.action in ['create']:
-            self.permission_classes = [IsAuthenticated, ]
-        return super().get_permissions()
+    # def get_permissions(self):
+    #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
+    #         self.permission_classes = [AllowAny, ]
+    #     elif self.action in ['create']:
+    #         self.permission_classes = [IsAuthenticated, ]
+    #     return super().get_permissions()
 
 
 class ReservationsAll(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     lookup_field = 'id'
 
     @action(detail=True, methods=["GET"])
-    def rooms(self, request, id=None):
+    def rooms(self, request, id):
         room = MeetingRoom.objects.get(id=id)
         reservations = room.reservations.filter(date_from__gte=timezone.now())
         all_reservations = ReservationSerializer(reservations, many=True)
+        print(all_reservations)
         return Response(data=all_reservations.data)
 
     def post(self, request):
@@ -81,7 +79,7 @@ class ReservationsAll(viewsets.ModelViewSet):
 
 
 class DeleteReservation(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.IsAuthenticated,)
 
     def get_reservation(self, reservation_id):
         try:
