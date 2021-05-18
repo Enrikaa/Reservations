@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from .serializers import MeetingRoomSerializer, ReservationSerializer, \
@@ -48,20 +49,19 @@ class RoomsAll(viewsets.ModelViewSet):
     #         self.permission_classes = [IsAuthenticated, ]
     #     return super().get_permissions()
 
-
-class ReservationsAll(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
-    queryset = Reservation.objects.all()
-    serializer_class = ReservationSerializer
-    lookup_field = 'id'
-
-    @action(detail=True, methods=["GET"])
-    def rooms(self, request, id):
+    @action(detail=True, methods=["GET"], throttle_classes=[UserRateThrottle])
+    def reservations(self, request, id):
         room = MeetingRoom.objects.get(id=id)
         reservations = room.reservations.filter(date_from__gte=timezone.now())
         all_reservations = ReservationSerializer(reservations, many=True)
-        print(all_reservations)
         return Response(data=all_reservations.data)
+
+
+class ReservationsAll(viewsets.ModelViewSet):
+    # permission_classes = (permissions.IsAuthenticated,)
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+    lookup_field = 'id'
 
     def post(self, request):
         reservation_object = Reservation.objects.all()
@@ -76,6 +76,12 @@ class ReservationsAll(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+    def example_adhoc_method(request, pk=None):
+        content = {
+            'status': 'request was permitted'
+        }
+        return Response(content)
 
 
 class DeleteReservation(APIView):

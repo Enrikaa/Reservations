@@ -37,7 +37,9 @@ class TestReservations(BaseTestCase):
     def test_get_reservations(self):
         self.client.force_authenticate(self.user)
         response = self.client.get(reverse("reservations-detail", args=[self.room.pk]))
+        print(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # ar po create dB susikure, ar as tikrai gavau sita ID
 
     def test_create_reservation(self):
         data = {"title": "Title123",
@@ -107,6 +109,7 @@ class TestAuthToken(BaseTestCase):
         data = {"email": 'a',
                 "password": 'b'}
         self.client.force_authenticate(self.user)
+        print(self.reservation.description)
         response = self.client.post(reverse("token_obtain_pair"), data=data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
