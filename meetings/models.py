@@ -22,6 +22,7 @@ class MeetingRoom(models.Model):
 
 class Reservation(models.Model):
     title = models.CharField(max_length=150)
+    description = models.CharField(max_length=300, blank=True)
     organizer = models.ForeignKey(
         User, related_name="organized_reservations", on_delete=models.CASCADE
     )
