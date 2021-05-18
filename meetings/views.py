@@ -5,6 +5,7 @@ from rest_framework import filters
 from rest_framework import permissions, status
 from rest_framework import viewsets
 from rest_framework.exceptions import NotFound
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
@@ -39,8 +40,10 @@ class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()
     serializer_class = MeetingRoomSerializer
     lookup_field = 'id'
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['room_number']
+    filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
+    filter_fields = ['capacity']
+    ordering_fields = ['title']
+    search_fields = ['description']
 
     # def get_permissions(self):
     #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
