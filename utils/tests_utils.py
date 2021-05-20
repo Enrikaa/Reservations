@@ -19,7 +19,7 @@ class BaseTestCase(TestCase):
                                              first_name=self.first_name, last_name=self.last_name,
                                              is_staff=self.is_staff
                                              )
-        self.room = baker.make(MeetingRoom, title='A', capacity="56", description="DescriptionTesting")
+        self.room = baker.make(MeetingRoom, title='A', capacity="56", description="DescriptionTesting") #search daromas pagal contains
         self.room3 = baker.make(MeetingRoom, title='C', capacity="56")
         self.room2 = baker.make(MeetingRoom, title='B')
         self.room4 = MeetingRoom.objects.create(title='Title', description='description', capacity='capacity',

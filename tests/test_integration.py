@@ -89,7 +89,7 @@ class TestRooms(BaseTestCase):
 
     def test_get_rooms_ordering(self):
         self.client.force_authenticate(self.user)
-        response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?ordering=title")
+        response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?ordering=title")  # minus
         results = response.json()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(results[0]['title'], "A")
@@ -98,11 +98,11 @@ class TestRooms(BaseTestCase):
 
     def test_get_rooms_filter(self):
         self.client.force_authenticate(self.user)
-        response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?capacity=56")
+        response = self.client.get(reverse('rooms-list') + '?capacity=56')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         results = response.json()
-        self.assertEqual(results[0]['capacity'], self.room.capacity)
-        self.assertEqual(results[1]['capacity'], self.room3.capacity)
+        self.assertEqual(results[0]['capacity'], self.room.capacity)  # ar tikrai gaunami expected ID
+        self.assertEqual(results[1]['capacity'], self.room3.capacity)  # ID
         self.assertEqual(len(results), 2)
 
     def test_get_rooms_search(self):
@@ -110,7 +110,7 @@ class TestRooms(BaseTestCase):
         response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?search=DescriptionTesting")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         results = response.json()
-        self.assertEqual(results[0]['capacity'], self.room.capacity)
+        self.assertEqual(results[0]['id'], self.room.id)
         self.assertEqual(len(results), 1)
 
     def test_get_reservations(self):
