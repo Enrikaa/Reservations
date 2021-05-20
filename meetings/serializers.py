@@ -23,11 +23,6 @@ class UsersSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['request'] = self.context['request']
-        return representation
-
 
 class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:

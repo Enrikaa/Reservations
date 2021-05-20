@@ -270,16 +270,16 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django Server.runserver" />
       <item itemvalue="Django tests.Test: meetings" />
       <item itemvalue="Django tests.Test: tests.test_integration" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_all_get_reservations" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_reservations" />
       <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_room_by_reservations" />
-      <item itemvalue="Python.runserver" />
-      <item itemvalue="Django Server.runserver" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_reservations" />
+      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_all_get_reservations" />
+      <item itemvalue="Django tests.Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment(r)" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Python.runserver" />
     </list>
     <recent_temporary>
       <list>
