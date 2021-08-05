@@ -1,19 +1,16 @@
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
-
 from rest_framework import filters
 from rest_framework import permissions, status
 from rest_framework import viewsets
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
-
 from .serializers import MeetingRoomSerializer, ReservationSerializer, \
     UsersSerializer
-
 from .models import MeetingRoom, Reservation, User
 from rest_framework.decorators import action
 
@@ -51,11 +48,12 @@ class RoomsAll(viewsets.ModelViewSet):
         elif self.action in ['create']:
             self.permission_classes = [IsAuthenticated, ]
         return super().get_permissions()
-    #
+
     @action(detail=True, methods=["GET"], throttle_classes=[UserRateThrottle])
     def reservations(self, request, **kwargs):
         room = self.get_object()
         reservations = room.reservations.filter(date_from__gte=timezone.now())
+        print(reservations)
         all_reservations = ReservationSerializer(reservations, many=True)
         return Response(data=all_reservations.data)
 
@@ -66,16 +64,19 @@ class ReservationsAll(viewsets.ModelViewSet):
     serializer_class = ReservationSerializer
     lookup_field = 'id'
 
-    def post(self, request):
-        reservation_object = Reservation.objects.all()
-        cut_reservations_strings = []
-        for i in reservation_object:
-            cut_reservations_strings.append(str((i.date_from))[0:16])
-        request_data = request.data["date_from"][0:16]
-        if request_data in cut_reservations_strings:
-            raise NotFound("Can't create RESERVATION")
-        else:
-            return self.create(request)
+    def create(self, request, *args, **kwargs):
+        request_data = request.data, 'request'
+        room_id = request_data[0]['room']
+        room = MeetingRoom.objects.get(pk=room_id)
+        check_in = request_data[0]['date_from']
+        check_out = request_data[0]['date_to']
+        case_1 = Reservation.objects.filter(room=room, date_from__lte=check_in, date_to__gte=check_in).exists()
+        case_2 = Reservation.objects.filter(room=room, date_from__lte=check_out, date_to__gte=check_out).exists()
+        case_3 = Reservation.objects.filter(room=room, date_from__gte=check_in, date_to__lte=check_out).exists()
+        # if either of these is true, abort and render the error
+        if case_1 or case_2 or case_3:
+            raise ValidationError({'error': 'reservation_cancelled_with_wrong_time'})
+        return super().create(request)
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
