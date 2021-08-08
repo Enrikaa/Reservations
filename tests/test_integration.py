@@ -125,6 +125,7 @@ class TestAuthToken(BaseTestCase):
         data = {"email": 'a',
                 "password": 'b'}
         self.client.force_authenticate(self.user)
+
         response = self.client.post(reverse("token_obtain_pair"), data=data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
