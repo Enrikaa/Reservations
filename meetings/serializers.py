@@ -28,7 +28,6 @@ class MeetingRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetingRoom
         fields = "__all__"
-        read_only_fields = ('created_by',)
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -39,11 +38,9 @@ class ReservationSerializer(serializers.ModelSerializer):
                   "organizer",
                   "room",
                   "external",
-                  "created_by",
                   "date_from",
                   "date_to",
                   ]
-        read_only_fields = ('created_by',)
 
     def validate_title(self, data):
         if 'title' == '':
@@ -71,7 +68,7 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        if instance.created_by:
-            representation['created_by'] = instance.created_by.email
+        if instance.organizer:
+            representation['organizer'] = instance.organizer.email
 
         return representation

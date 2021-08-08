@@ -65,7 +65,7 @@ class ReservationsAll(viewsets.ModelViewSet):
     lookup_field = 'id'
 
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        serializer.save(organizer=self.request.user)
 
 
 class DeleteReservation(APIView):

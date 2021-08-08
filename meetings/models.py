@@ -29,12 +29,10 @@ class Reservation(models.Model):
     room = models.ForeignKey(
         MeetingRoom, related_name="reservations", on_delete=models.CASCADE
     )
+    users = models.ManyToManyField(User, related_name="users_reservations")
     external = models.BooleanField(default=False)
     date_from = models.DateTimeField()
     date_to = models.DateTimeField()
-    created_by = models.ForeignKey(User, related_name='user_name',
-                                   max_length=16, on_delete=models.CASCADE,
-                                   null=True)
 
     def __str__(self):
         return self.title
