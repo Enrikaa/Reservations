@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "meetings",
     "djoser",
     "drf_yasg",
-    "django_filters"
+    # "django_filters"
 ]
 
 MIDDLEWARE = [
@@ -102,8 +102,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '112/day', #unauthenticated
-        'user': '114/day' #authenticated
+        'anon': '112/day',  # unauthenticated
+        'user': '114/day'  # authenticated
     },
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.BasicAuthentication",
