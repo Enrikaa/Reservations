@@ -2,6 +2,8 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from meetings.utils.abstract_class import AbstractClass
+
 
 class User(AbstractUser):
     email = models.EmailField(verbose_name="email",
@@ -10,7 +12,7 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
 
 
-class MeetingRoom(models.Model):
+class MeetingRoom(AbstractClass):
     title = models.CharField(max_length=150)
     description = models.TextField()
     room_number = models.CharField(max_length=16, unique=True)
@@ -20,7 +22,7 @@ class MeetingRoom(models.Model):
         return self.room_number
 
 
-class Reservation(models.Model):
+class Reservation(AbstractClass):
     title = models.CharField(max_length=150)
     description = models.CharField(max_length=300, blank=True)
     organizer = models.ForeignKey(

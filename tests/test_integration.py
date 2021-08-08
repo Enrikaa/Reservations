@@ -74,6 +74,7 @@ class TestReservations(BaseTestCase):
         self.client.force_authenticate(self.user)
         response = self.client.delete(
             f"/api/v1/reservation/delete/{self.reservation.id}/")
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_create_reservation_with_existing_time(self):
