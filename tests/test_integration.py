@@ -76,6 +76,29 @@ class TestReservations(BaseTestCase):
             f"/api/v1/reservation/delete/{self.reservation.id}/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_create_reservation_with_existing_time(self):
+        """
+        In test database there is room with this time:
+        date_from: 2021-08-07T19:57:01.615Z
+        date_out: 2021-09-07T19:57:01.615Z
+        """
+
+        date_from = "2021-08-08T19:57:01.615Z"
+        date_to = "2021-08-23T19:57:01.615Z"
+
+        data = {"title": "Title123",
+                "date_from": date_from,
+                "date_to": date_to,
+                "organizer": self.user.id,
+                "room": self.room.id,
+                "external": False
+                }
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, response.data)
+        self.assertEqual(response.json(), {'error': ['reservation_cancelled_with_wrong_time']})
+
 
 class TestRooms(BaseTestCase):
 

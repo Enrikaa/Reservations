@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from rest_framework import serializers
 
 from .models import MeetingRoom, Reservation, User
@@ -48,6 +49,23 @@ class ReservationSerializer(serializers.ModelSerializer):
         if 'title' == '':
             raise ValidationError(
                 {'password': 'password_no_upper'},
+            )
+        return data
+
+    def validate(self, data):
+        room = data['room']
+        check_in = data['date_from']
+        check_out = data['date_to']
+
+        case = Reservation.objects.filter(room=room).filter(
+            Q(date_from__lte=check_in, date_to__gte=check_in) |
+            Q(date_from__lte=check_out, date_to__gte=check_out) |
+            Q(date_from__gte=check_in, date_to__lte=check_out)
+        ).exists()
+
+        if case:
+            raise ValidationError(
+                {'error': 'reservation_cancelled_with_wrong_time'}
             )
         return data
 
