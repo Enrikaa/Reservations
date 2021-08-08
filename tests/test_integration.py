@@ -1,10 +1,7 @@
-from django.test import TestCase
-from model_bakery import baker
-from rest_framework.test import APIClient
-from meetings.models import User, Reservation, MeetingRoom
 from django.urls import reverse
 from rest_framework import status
-from utils.tests_utils import BaseTestCase
+
+from meetings.utils.test_utils import BaseTestCase
 
 
 class TestUsers(BaseTestCase):
@@ -33,13 +30,6 @@ class TestReservations(BaseTestCase):
         self.client.force_authenticate(self.user)
         response = self.client.get(reverse("reservations-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_get_reservations(self):
-        self.client.force_authenticate(self.user)
-        response = self.client.get(reverse("reservations-detail", args=[self.room.pk]))
-        print(response.json())
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # ar po create dB susikure, ar as tikrai gavau sita ID
 
     def test_create_reservation(self):
         data = {"title": "Title123",
@@ -94,6 +84,32 @@ class TestRooms(BaseTestCase):
         response = self.client.get(reverse("rooms-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_get_rooms_ordering(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?ordering=title")  # minus
+        results = response.json()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(results[0]['title'], "A")
+        self.assertEqual(results[1]['title'], "B")
+        self.assertEqual(results[2]['title'], "C")
+
+    def test_get_rooms_filter(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(reverse('rooms-list') + '?capacity=56')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        results = response.json()
+        self.assertEqual(results[0]['capacity'], self.room.capacity)
+        self.assertEqual(results[1]['capacity'], self.room3.capacity)
+        self.assertEqual(len(results), 2)
+
+    def test_get_rooms_search(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get("http://0.0.0.0:8000/api/v1/rooms/?search=DescriptionTesting")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        results = response.json()
+        self.assertEqual(results[0]['id'], self.room.id)
+        self.assertEqual(len(results), 1)
+
 
 class TestAuthToken(BaseTestCase):
 
@@ -109,7 +125,6 @@ class TestAuthToken(BaseTestCase):
         data = {"email": 'a',
                 "password": 'b'}
         self.client.force_authenticate(self.user)
-        print(self.reservation.description)
         response = self.client.post(reverse("token_obtain_pair"), data=data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(

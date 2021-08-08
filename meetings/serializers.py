@@ -1,6 +1,5 @@
-from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
 from .models import MeetingRoom, Reservation, User
 
@@ -22,11 +21,6 @@ class UsersSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         user.save()
         return user
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['request'] = self.context['request']
-        return representation
 
 
 class MeetingRoomSerializer(serializers.ModelSerializer):

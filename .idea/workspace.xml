@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="5538679c-a920-488e-bdf0-f8e80b9db677" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetings/utils/test_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Reservations.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Reservations.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/migrations/0002_auto_20210504_1048.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/migrations/0003_auto_20210512_2057.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/migrations/0003_support.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/meetings/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetings/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/meetings/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meetings/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/meetings/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.pip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reserv/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/reserv/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserv/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/reserv/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_integration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,77 +35,36 @@
       </list>
     </option>
   </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="FLASK_APP" value="app" />
+        <entry key="$PROJECT_DIR$" value="additional-validation-to-reservation-times" />
       </map>
     </option>
-  </component>
-  <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/meetings/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/meetings/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/meetings/urls.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/meetings/serializers.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/reserv/settings.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/meetings/urls.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/meetings/views.py" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectId" id="1rnag1YFPKkRrYwD0ouENzl6zLb" />
+  <component name="ProjectId" id="1wLRXv9X5sAnGkaW9njypTLUDDm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/utils" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Django tests.Test: tests.test_integration.TestReservations.test_get_reservations">
-    <configuration name="Test: meetings" type="DjangoTestsConfigurationType">
-      <module name="Reservations" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="docker-compose://[$PROJECT_DIR$/docker-compose.yml]:api/python" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="meetings" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test: tests.test_integration" type="DjangoTestsConfigurationType" temporary="true">
+  <component name="RunManager" selected="Django tests.Test: tests.test_integration.TestReservations.test_create_reservation_with_wrong_time">
+    <configuration name="Test: tests.test_integration.BaseTestCase" type="DjangoTestsConfigurationType" temporary="true">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -108,14 +77,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tests.test_integration" />
+      <option name="TARGET" value="tests.test_integration.BaseTestCase" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: tests.test_integration.TestReservations.test_create_reservation_past" type="DjangoTestsConfigurationType" temporary="true">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,14 +97,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tests.test_integration.TestAuthToken.test_get_auth_wrong_token" />
+      <option name="TARGET" value="tests.test_integration.TestReservations.test_create_reservation_past" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: tests.test_integration.TestReservations.test_all_get_reservations" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: tests.test_integration.TestReservations.test_create_reservation_with_wrong_time" type="DjangoTestsConfigurationType" temporary="true">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -148,14 +117,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tests.test_integration.TestReservations.test_all_get_reservations" />
+      <option name="TARGET" value="tests.test_integration.TestReservations.test_create_reservation_with_wrong_time" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: tests.test_integration.TestReservations.test_get_reservations" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: tests.test_integration.TestUsers" type="DjangoTestsConfigurationType" temporary="true">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -168,14 +137,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tests.test_integration.TestReservations.test_get_reservations" />
+      <option name="TARGET" value="tests.test_integration.TestUsers" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: tests.test_integration.TestReservations.test_get_room_by_reservations" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: tests.test_integration.TestUsers.test_can_create_user" type="DjangoTestsConfigurationType" temporary="true">
       <module name="Reservations" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -188,106 +157,20 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tests.test_integration.TestReservations.test_get_room_by_reservations" />
+      <option name="TARGET" value="tests.test_integration.TestUsers.test_can_create_user" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="runserver" type="PythonConfigurationType" factoryName="Python">
-      <module name="Reservations" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/env/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
-      <option name="PARAMETERS" value="runserver" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="runserver" type="Python.DjangoServer" factoryName="Django server">
-      <module name="Reservations" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="reserv.settings" />
-      </envs>
-      <option name="SDK_HOME" value="docker-compose://[$PROJECT_DIR$/docker-compose.yml]:api/python" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="0.0.0.0" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Local">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="sourceFilePath" value="docker-compose.yml" />
-          <option name="upExitCodeFromService" value="" />
-          <option name="upTimeout" value="" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment(r)" type="docker-deploy" factoryName="docker-compose.yml" server-name="Local">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="api" />
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-          <option name="upExitCodeFromService" value="" />
-          <option name="upTimeout" value="" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Django Server.runserver" />
-      <item itemvalue="Django tests.Test: meetings" />
-      <item itemvalue="Django tests.Test: tests.test_integration" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_room_by_reservations" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_reservations" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_all_get_reservations" />
-      <item itemvalue="Django tests.Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment(r)" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-      <item itemvalue="Python.runserver" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_reservations" />
-        <item itemvalue="Django tests.Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token" />
-        <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_all_get_reservations" />
-        <item itemvalue="Django tests.Test: tests.test_integration" />
-        <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_get_room_by_reservations" />
+        <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_create_reservation_with_wrong_time" />
+        <item itemvalue="Django tests.Test: tests.test_integration.TestUsers" />
+        <item itemvalue="Django tests.Test: tests.test_integration.BaseTestCase" />
+        <item itemvalue="Django tests.Test: tests.test_integration.TestUsers.test_can_create_user" />
+        <item itemvalue="Django tests.Test: tests.test_integration.TestReservations.test_create_reservation_past" />
       </list>
     </recent_temporary>
   </component>
@@ -295,66 +178,16 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5538679c-a920-488e-bdf0-f8e80b9db677" name="Default Changelist" comment="" />
-      <created>1619614415168</created>
+      <created>1628235926705</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1619614415168</updated>
-      <workItem from="1619614418511" duration="33784000" />
-      <workItem from="1619761483944" duration="19085000" />
-      <workItem from="1619805295832" duration="5806000" />
-      <workItem from="1619864036744" duration="1269000" />
-      <workItem from="1619876054671" duration="493000" />
-      <workItem from="1619876604833" duration="206000" />
-      <workItem from="1619876815325" duration="3642000" />
-      <workItem from="1619934542638" duration="5343000" />
-      <workItem from="1619941978782" duration="183000" />
-      <workItem from="1619942593554" duration="66000" />
-      <workItem from="1619944844598" duration="674000" />
-      <workItem from="1619945759214" duration="133000" />
-      <workItem from="1619945950462" duration="168000" />
-      <workItem from="1619946198113" duration="239000" />
-      <workItem from="1619946439940" duration="172000" />
-      <workItem from="1619946615285" duration="147000" />
-      <workItem from="1619947078120" duration="2697000" />
-      <workItem from="1619968139573" duration="3909000" />
-      <workItem from="1619977514086" duration="237000" />
-      <workItem from="1619977836536" duration="6488000" />
-      <workItem from="1619990556846" duration="6968000" />
-      <workItem from="1620039104939" duration="9842000" />
-      <workItem from="1620109100463" duration="3027000" />
-      <workItem from="1620120972509" duration="8599000" />
-      <workItem from="1620156231006" duration="10869000" />
-      <workItem from="1620203318501" duration="778000" />
-      <workItem from="1620221325989" duration="4361000" />
-      <workItem from="1620282811763" duration="82000" />
-      <workItem from="1620285292605" duration="4781000" />
-      <workItem from="1620363987572" duration="5546000" />
-      <workItem from="1620377051325" duration="5818000" />
-      <workItem from="1620585189237" duration="539000" />
-      <workItem from="1620586080389" duration="7366000" />
-      <workItem from="1620670124169" duration="288000" />
-      <workItem from="1620670651261" duration="3922000" />
-      <workItem from="1620680330228" duration="1325000" />
-      <workItem from="1620709890182" duration="263000" />
-      <workItem from="1620715119317" duration="3888000" />
-      <workItem from="1620723644306" duration="337000" />
-      <workItem from="1620737559008" duration="4708000" />
-      <workItem from="1620742985854" duration="9771000" />
-      <workItem from="1620799745319" duration="601000" />
-      <workItem from="1620828591837" duration="9025000" />
-      <workItem from="1620851366886" duration="246000" />
-      <workItem from="1620851773712" duration="2224000" />
-      <workItem from="1620854071857" duration="1921000" />
-      <workItem from="1620934617210" duration="11555000" />
-      <workItem from="1620974874617" duration="18872000" />
-      <workItem from="1621086392954" duration="7714000" />
-      <workItem from="1621154699189" duration="6150000" />
-      <workItem from="1621165281465" duration="72000" />
-      <workItem from="1621165497980" duration="14949000" />
-      <workItem from="1621229227871" duration="14429000" />
-      <workItem from="1621315642372" duration="41000" />
-      <workItem from="1621339422043" duration="244000" />
-      <workItem from="1621346869190" duration="2655000" />
+      <updated>1628235926705</updated>
+      <workItem from="1628235928836" duration="95000" />
+      <workItem from="1628236032770" duration="5278000" />
+      <workItem from="1628268262042" duration="4982000" />
+      <workItem from="1628274092328" duration="7537000" />
+      <workItem from="1628364109832" duration="2595000" />
+      <workItem from="1628407851738" duration="5246000" />
     </task>
     <servers />
   </component>
@@ -362,67 +195,67 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestAuthToken_test_get_auth_wrong_token.coverage" NAME="Test: tests.test_one_route.TestAuthToken.test_get_auth_wrong_token Coverage Results" MODIFIED="1620993223779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestRooms_test_get_rooms.coverage" NAME="Test: tests.test_one_route.TestRooms.test_get_rooms Coverage Results" MODIFIED="1620990647364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestReservations_test_all_get_reservations.coverage" NAME="Test: meetings.tests.TestReservations.test_all_get_reservations Coverage Results" MODIFIED="1628269144624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__meetings.coverage" NAME="Test: meetings Coverage Results" MODIFIED="1620761893602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestUsers_test_can_create_user.coverage" NAME="Test: tests.test_one_route.TestUsers.test_can_create_user Coverage Results" MODIFIED="1620986812329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_get_room_by_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_get_room_by_reservations Coverage Results" MODIFIED="1621244927684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation Coverage Results" MODIFIED="1620983084720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_create_reservation_past.coverage" NAME="Test: tests.test_integration.TestReservations.test_create_reservation_past Coverage Results" MODIFIED="1628272598484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_can_create_user.coverage" NAME="Test: tests.test_integration.TestLogin.test_can_create_user Coverage Results" MODIFIED="1620946192394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$DockerRun.coverage" NAME="DockerRun Coverage Results" MODIFIED="1619939897036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestAuthToken.coverage" NAME="Test: tests.test_integration.TestAuthToken Coverage Results" MODIFIED="1621233174078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1620983421949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestUsers_test_can_create_user.coverage" NAME="Test: tests.test_integration.TestUsers.test_can_create_user Coverage Results" MODIFIED="1621193185693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestAuthToken_test_get_auth_token.coverage" NAME="Test: tests.test_one_route.TestAuthToken.test_get_auth_token Coverage Results" MODIFIED="1620993068327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_rooms_filter.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_rooms_filter Coverage Results" MODIFIED="1621504155634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestAuthToken.coverage" NAME="Test: tests.test_integration.TestAuthToken Coverage Results" MODIFIED="1628068361804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestUsers_test_can_create_user.coverage" NAME="Test: meetings.tests.TestUsers.test_can_create_user Coverage Results" MODIFIED="1628269590869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_rooms.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_rooms Coverage Results" MODIFIED="1621249551545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestAuthToken.coverage" NAME="Test: tests.test_one_route.TestAuthToken Coverage Results" MODIFIED="1620993140393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_integration.TestReservations.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1621241209593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_get_users.coverage" NAME="Test: tests.test_integration.TestLogin.test_get_users Coverage Results" MODIFIED="1620979805764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestReservations_test_create_reservation.coverage" NAME="Test: tests.test_one_route.TestReservations.test_create_reservation Coverage Results" MODIFIED="1620985661288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms.coverage" NAME="Test: tests.test_integration.TestRooms Coverage Results" MODIFIED="1621193395724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestRooms_test_create_room.coverage" NAME="Test: tests.test_one_route.TestRooms.test_create_room Coverage Results" MODIFIED="1620991107259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestLogin_test_create_reservation.coverage" NAME="Test: meetings.tests.TestLogin.test_create_reservation Coverage Results" MODIFIED="1620761873001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestReservations_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_one_route.TestReservations.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1620985703699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_BaseTestCase.coverage" NAME="Test: meetings.tests.BaseTestCase Coverage Results" MODIFIED="1628272514725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_can_create_user_without_setup.coverage" NAME="Test: tests.test_integration.TestLogin.test_can_create_user_without_setup Coverage Results" MODIFIED="1620939379250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$models.coverage" NAME="models Coverage Results" MODIFIED="1619941539445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/meetings" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_wrong_credentials_unable_login.coverage" NAME="Test: tests.test_integration.TestLogin.test_wrong_credentials_unable_login Coverage Results" MODIFIED="1620681716039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1620718258808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestLogin.coverage" NAME="Test: tests.test_one_route.TestLogin Coverage Results" MODIFIED="1620985312065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestUsers.coverage" NAME="Test: meetings.tests.TestUsers Coverage Results" MODIFIED="1628272520887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin.coverage" NAME="Test: tests.test_integration.TestLogin Coverage Results" MODIFIED="1620986972195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration.coverage" NAME="Test: tests.test_integration Coverage Results" MODIFIED="1621245653531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration.coverage" NAME="Test: tests.test_integration Coverage Results" MODIFIED="1628268574803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__utils_tests_utils.coverage" NAME="Test: utils.tests_utils Coverage Results" MODIFIED="1621239432643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_get_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_get_reservations Coverage Results" MODIFIED="1621258107239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_all_get_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_all_get_reservations Coverage Results" MODIFIED="1621245919965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestAuthToken_test_get_auth_wrong_token.coverage" NAME="Test: tests.test_integration.TestAuthToken.test_get_auth_wrong_token Coverage Results" MODIFIED="1621257994827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_create_reservation_with_wrong_time.coverage" NAME="Test: tests.test_integration.TestReservations.test_create_reservation_with_wrong_time Coverage Results" MODIFIED="1628279629376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route.coverage" NAME="Test: tests.test_one_route Coverage Results" MODIFIED="1620993443891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_can_delete_reservation.coverage" NAME="Test: tests.test_integration.TestReservations.test_can_delete_reservation Coverage Results" MODIFIED="1621241846139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_get_auth_token.coverage" NAME="Test: tests.test_integration.TestLogin.test_get_auth_token Coverage Results" MODIFIED="1620984729960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation_past.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation_past Coverage Results" MODIFIED="1620980256457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations.coverage" NAME="Test: tests.test_integration.TestReservations Coverage Results" MODIFIED="1621193342481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$pytest_in_test_integration_py.coverage" NAME="pytest in test_integration.py Coverage Results" MODIFIED="1621492199885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestUsers.coverage" NAME="Test: tests.test_one_route.TestUsers Coverage Results" MODIFIED="1620992825107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestUsers.coverage" NAME="Test: tests.test_integration.TestUsers Coverage Results" MODIFIED="1621192641516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_create_reservation.coverage" NAME="Test: tests.test_integration.TestReservations.test_create_reservation Coverage Results" MODIFIED="1628068393064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__utils_tests_utils_BaseTestCase.coverage" NAME="Test: utils.tests_utils.BaseTestCase Coverage Results" MODIFIED="1621375305701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_rooms_search_test.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_rooms_search_test Coverage Results" MODIFIED="1621371281877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestUsers_test_can_create_user.coverage" NAME="Test: tests.test_one_route.TestUsers.test_can_create_user Coverage Results" MODIFIED="1620986812329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_get_room_by_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_get_room_by_reservations Coverage Results" MODIFIED="1621244927684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_reservations.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_reservations Coverage Results" MODIFIED="1621376943714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation Coverage Results" MODIFIED="1620983084720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_BaseTestCase.coverage" NAME="Test: tests.test_integration.BaseTestCase Coverage Results" MODIFIED="1628274605326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_rooms_ordering.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_rooms_ordering Coverage Results" MODIFIED="1621504216165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1620983421949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestUsers_test_can_create_user.coverage" NAME="Test: tests.test_integration.TestUsers.test_can_create_user Coverage Results" MODIFIED="1628272848816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestAuthToken_test_get_auth_token.coverage" NAME="Test: tests.test_one_route.TestAuthToken.test_get_auth_token Coverage Results" MODIFIED="1620993068327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_integration.TestReservations.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1621367345917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms.coverage" NAME="Test: tests.test_integration.TestRooms Coverage Results" MODIFIED="1628068350223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests.coverage" NAME="Test: meetings.tests Coverage Results" MODIFIED="1628269301317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestLogin_test_create_reservation.coverage" NAME="Test: meetings.tests.TestLogin.test_create_reservation Coverage Results" MODIFIED="1620761873001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestUsers_test_get_users.coverage" NAME="Test: meetings.tests.TestUsers.test_get_users Coverage Results" MODIFIED="1628269220508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestReservations_test_create_reservation_with_bad_title.coverage" NAME="Test: tests.test_one_route.TestReservations.test_create_reservation_with_bad_title Coverage Results" MODIFIED="1620985703699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestRooms_test_get_rooms_search.coverage" NAME="Test: tests.test_integration.TestRooms.test_get_rooms_search Coverage Results" MODIFIED="1621504187431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1620718258808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestLogin.coverage" NAME="Test: tests.test_one_route.TestLogin Coverage Results" MODIFIED="1620985312065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_tests_TestReservations.coverage" NAME="Test: meetings.tests.TestReservations Coverage Results" MODIFIED="1628269119071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_get_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_get_reservations Coverage Results" MODIFIED="1621258107239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations_test_all_get_reservations.coverage" NAME="Test: tests.test_integration.TestReservations.test_all_get_reservations Coverage Results" MODIFIED="1621245919965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__meetings_test_integration.coverage" NAME="Test: meetings.test_integration Coverage Results" MODIFIED="1621492133487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_create_reservation_past.coverage" NAME="Test: tests.test_integration.TestLogin.test_create_reservation_past Coverage Results" MODIFIED="1620980256457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestReservations.coverage" NAME="Test: tests.test_integration.TestReservations Coverage Results" MODIFIED="1628068338514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestUsers.coverage" NAME="Test: tests.test_integration.TestUsers Coverage Results" MODIFIED="1628275095878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestReservations_test_can_delete_reserv.coverage" NAME="Test: tests.test_one_route.TestReservations.test_can_delete_reserv Coverage Results" MODIFIED="1620990391963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_one_route_TestReservations.coverage" NAME="Test: tests.test_one_route.TestReservations Coverage Results" MODIFIED="1620992899033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Reservations$Test__tests_test_integration_TestLogin_test_get_reservations.coverage" NAME="Test: tests.test_integration.TestLogin.test_get_reservations Coverage Results" MODIFIED="1620980136552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
