@@ -53,7 +53,6 @@ class RoomsAll(viewsets.ModelViewSet):
     def reservations(self, request, **kwargs):
         room = self.get_object()
         reservations = room.reservations.filter(date_from__gte=timezone.now())
-        print(reservations)
         all_reservations = ReservationSerializer(reservations, many=True)
         return Response(data=all_reservations.data)
 

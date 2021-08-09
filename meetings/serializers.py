@@ -37,6 +37,7 @@ class ReservationSerializer(serializers.ModelSerializer):
                   "title",
                   "organizer",
                   "room",
+                  "users",
                   "external",
                   "date_from",
                   "date_to",
@@ -53,22 +54,29 @@ class ReservationSerializer(serializers.ModelSerializer):
         room = data['room']
         check_in = data['date_from']
         check_out = data['date_to']
+        users = data['users']
 
-        case = Reservation.objects.filter(room=room).filter(
+        check_room_time = Reservation.objects.filter(room=room).filter(
             Q(date_from__lte=check_in, date_to__gte=check_in) |
             Q(date_from__lte=check_out, date_to__gte=check_out) |
             Q(date_from__gte=check_in, date_to__lte=check_out)
         ).exists()
 
-        if case:
+        check_user_reservations = Reservation.objects.filter(organizer__in=users).filter(
+            Q(date_from__lte=check_in, date_to__gte=check_in) |
+            Q(date_from__lte=check_out, date_to__gte=check_out) |
+            Q(date_from__gte=check_in, date_to__lte=check_out)
+        ).exists()
+
+        if check_room_time and check_user_reservations:
             raise ValidationError(
                 {'error': 'reservation_cancelled_with_wrong_time'}
             )
+
         return data
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         if instance.organizer:
             representation['organizer'] = instance.organizer.email
-
         return representation
