@@ -9,7 +9,6 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
-
 from .models import MeetingRoom, Reservation, User
 from .serializers import MeetingRoomSerializer, ReservationSerializer, \
     UsersSerializer
@@ -18,7 +17,6 @@ from .serializers import MeetingRoomSerializer, ReservationSerializer, \
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = User.objects.all()
-    lookup_field = 'pk'
 
     def get_permissions(self):
         if self.action in ['update', 'partial_update', 'destroy', 'list']:
@@ -36,7 +34,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()
     serializer_class = MeetingRoomSerializer
-    lookup_field = 'id'
     filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
     filterset_fields = ['capacity']
     ordering_fields = ['title']
@@ -61,7 +58,6 @@ class ReservationsAll(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    lookup_field = 'id'
 
     def perform_create(self, serializer):
         serializer.save(organizer=self.request.user)
