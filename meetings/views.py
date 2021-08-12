@@ -30,6 +30,13 @@ class UserViewSet(viewsets.ModelViewSet):
         context.update({'request': self.request.user})
         return context
 
+    @action(detail=True, methods=["GET"])
+    def user_reservations(self, request, **kwargs):
+        user = self.get_object()
+        users = user.organized_reservations.filter(external=True)
+        all_users = ReservationSerializer(users, many=True)
+        return Response(data=all_users.data)
+
 
 class RoomsAll(viewsets.ModelViewSet):
     queryset = MeetingRoom.objects.all()

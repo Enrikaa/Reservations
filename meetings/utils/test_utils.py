@@ -28,7 +28,7 @@ class BaseTestCase(TestCase):
         self.room4 = MeetingRoom.objects.create(title='Title', description='description', capacity='capacity',
                                                 room_number="number")
         date_from = "2021-08-07T19:57:01.615Z"
-        date_to = "2021-09-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z"
         self.reservation = baker.make(Reservation, organizer=self.user, room=self.room,
                                       date_from=date_from, date_to=date_to)
         self.reservation2 = baker.make(Reservation, organizer=self.user, room=self.room4,
