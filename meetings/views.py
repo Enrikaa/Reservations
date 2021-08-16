@@ -81,9 +81,6 @@ class ReservationsAll(viewsets.ModelViewSet):
 
 
 class DeleteReservation(APIView):
-    """
-    This endpoint responses for deleting API
-    """
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_reservation(self, reservation_id):
