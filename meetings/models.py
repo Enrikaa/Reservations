@@ -1,8 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.signals import request_finished
 from django.db import models
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
 
 from meetings.utils.abstract_class import AbstractClass
 
@@ -27,7 +24,7 @@ class MeetingRoom(AbstractClass):
 class Reservation(AbstractClass):
     title = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=300, blank=True)
-    organizer = models.ForeignKey(
+    organizer = models.ForeignKey(  # self.assert num of
         User, related_name="organized_reservations", on_delete=models.CASCADE
     )
     room = models.ForeignKey(
@@ -40,12 +37,3 @@ class Reservation(AbstractClass):
 
     def __str__(self):
         return self.title
-
-
-@receiver(post_save, sender=Reservation)
-def save_profile(sender, instance, **kwargs):
-    """
-    This is a sender when Reservation app is created
-    """
-    print("Reservation object created")
-    instance.organizer.save()

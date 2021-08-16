@@ -25,6 +25,38 @@ class TestUsers(BaseTestCase):
         response = self.client.get(reverse("users-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_get_user_created_reservations(self):
+        self.client.force_authenticate(self.user2)
+        response = self.client.get(reverse('users-list') + 'user_created_reservations/')
+        data = response.data
+        reservation2_title = 'reservation2'
+        reservation3_title = 'reservation3'
+        self.assertEqual(len(data), 2)
+        self.assertEqual(data[0]['title'], reservation2_title)
+        self.assertEqual(data[1]['title'], reservation3_title)
+        with self.assertNumQueries(3):
+            response = self.client.get(reverse('users-list') + 'user_created_reservations/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_user_created_reservations_queries_count(self):
+        with self.assertNumQueries(1):
+            self.client.get(reverse('users-list') + 'user_created_reservations/')
+
+    def test_get_user_attending_reservations(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(reverse('users-list') + 'user_attending_reservations/')
+        data = response.data
+        reservation_title = 'reservation'
+        reservation3_title = 'reservation3'
+        self.assertEqual(len(data), 2)
+        self.assertEqual(data[0]['title'], reservation_title)
+        self.assertEqual(data[1]['title'], reservation3_title)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_user_attending_reservations_queries_count(self):
+        with self.assertNumQueries(1):
+            self.client.get(reverse('users-list') + 'user_attending_reservations/')
+
 
 class TestReservations(BaseTestCase):
 
@@ -103,7 +135,7 @@ class TestReservations(BaseTestCase):
         """
         In test database there is room with this time:
         date_from = "2021-08-07T19:57:01.615Z"
-        date_to = "2021-08-20T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z" #TODO hours
         """
         date_from = "2021-08-08T19:57:01.615Z"
         date_to = "2021-08-19T19:57:01.615Z"
@@ -208,6 +240,8 @@ class TestReservations(BaseTestCase):
             "users": [self.user.id],
             "external": False
         }
+
+        # self.assertNumQueries() get_or_create
 
         self.client.force_authenticate(self.user)
         response = self.client.post(reverse("reservations-list"), data=data)

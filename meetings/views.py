@@ -1,3 +1,4 @@
+from django.db import connection, reset_queries
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, status
@@ -23,6 +24,7 @@ class UserViewSet(viewsets.ModelViewSet):
             self.permission_classes = [AllowAny, ]
         elif self.action in ['create']:
             self.permission_classes = [IsAuthenticated, ]
+        print(len(connection.queries), "QUERIES COUNT")
         return super().get_permissions()
 
     def get_serializer_context(self):
@@ -30,11 +32,19 @@ class UserViewSet(viewsets.ModelViewSet):
         context.update({'request': self.request.user})
         return context
 
-    @action(detail=True, methods=["GET"])
-    def user_reservations(self, request, **kwargs):
-        user = self.get_object()
-        users = user.organized_reservations.filter(external=True)
-        all_users = ReservationSerializer(users, many=True)
+    @action(detail=False, methods=["GET"])
+    def user_created_reservations(self, request, **kwargs):
+        username = request.user.id
+        reservations = Reservation.objects.select_related('organizer').filter(organizer=username)
+        all_users = ReservationSerializer(reservations, many=True)
+        return Response(data=all_users.data)
+
+    @action(detail=False, methods=["GET"])
+    def user_attending_reservations(self, request, **kwargs):
+        username = request.user.id
+        reservations = Reservation.objects.prefetch_related('users').filter(users=username)
+        Reservation.objects.prefetch_related('users').filter(users=username)
+        all_users = ReservationSerializer(reservations, many=True)
         return Response(data=all_users.data)
 
 

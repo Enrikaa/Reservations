@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.db import transaction, connection
+from django.db import transaction
 from django.db.models import Q
 from rest_framework import serializers
 
@@ -46,23 +46,27 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     def validate(self, validated_data):
         organizer = validated_data['organizer']
-        user_reservation_count = Reservation.objects.select_related('organizer').filter(
-            organizer=organizer)  # How many reservations have user
+        user_reservation_count = Reservation.objects.select_related('organizer').filter(  # TODO count
+            organizer=organizer)
 
         users_with_superuser_status = User.objects.prefetch_related(
-            'users_reservations').filter(is_staff=True)  # Admin with all privilegies should be lees than 10
+            'users_reservations').filter(is_staff=True)
 
-        if len(user_reservation_count) >= 100:
+        max_reservations_number = 10
+        max_user_amount_in_room = 4
+        max_super_users_status_amount = 10
+
+        if len(user_reservation_count) >= max_reservations_number:
             raise ValidationError(
                 {'error': f'{organizer} user_have_to_many_reservations'},
             )
 
-        if len(validated_data['users']) >= 4:
+        if len(validated_data['users']) >= max_user_amount_in_room:
             raise ValidationError(
                 {'non_field_error': 'to_many_users_in_room'},
             )
 
-        if len(users_with_superuser_status) >= 10:
+        if len(users_with_superuser_status) >= max_super_users_status_amount:
             raise ValidationError(
                 {'is_staff': 'to_many_users_with_superuser_status'},
             )
