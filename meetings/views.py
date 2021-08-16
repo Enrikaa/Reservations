@@ -81,6 +81,9 @@ class ReservationsAll(viewsets.ModelViewSet):
 
 
 class DeleteReservation(APIView):
+    """
+    This endpoint responses for deleting API
+    """
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_reservation(self, reservation_id):
@@ -100,3 +103,4 @@ class DeleteReservation(APIView):
         reservation = self.get_reservation(reservation_id=reservation_id)
         reservation.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
