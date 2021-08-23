@@ -34,6 +34,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["GET"])
     def user_created_reservations(self, request, **kwargs):
+        """
+        Finds reservations which is created by specific user
+        """
         username = request.user.id
         reservations = Reservation.objects.select_related('organizer').filter(organizer=username)
         all_users = ReservationSerializer(reservations, many=True)
@@ -41,6 +44,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["GET"])
     def user_attending_reservations(self, request, **kwargs):
+        """
+        Finds attending reservations in which are specific user as a guest
+        """
         username = request.user.id
         reservations = Reservation.objects.prefetch_related('users').filter(users=username)
         Reservation.objects.prefetch_related('users').filter(users=username)
@@ -65,6 +71,9 @@ class RoomsAll(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["GET"], throttle_classes=[UserRateThrottle])
     def reservations(self, request, **kwargs):
+        """
+        Finds reservations by specific user id
+        """
         room = self.get_object()
         reservations = room.reservations.filter(date_from__gte=timezone.now())
         all_reservations = ReservationSerializer(reservations, many=True)
@@ -100,4 +109,3 @@ class DeleteReservation(APIView):
         reservation = self.get_reservation(reservation_id=reservation_id)
         reservation.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
