@@ -1,6 +1,7 @@
-from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+from meetings.utils.abstract_class import AbstractClass
 
 
 class User(AbstractUser):
@@ -10,7 +11,7 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
 
 
-class MeetingRoom(models.Model):
+class MeetingRoom(AbstractClass):
     title = models.CharField(max_length=150)
     description = models.TextField()
     room_number = models.CharField(max_length=16, unique=True)
@@ -20,21 +21,19 @@ class MeetingRoom(models.Model):
         return self.room_number
 
 
-class Reservation(models.Model):
-    title = models.CharField(max_length=150)
+class Reservation(AbstractClass):
+    title = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=300, blank=True)
-    organizer = models.ForeignKey(
+    organizer = models.ForeignKey(  # self.assert num of
         User, related_name="organized_reservations", on_delete=models.CASCADE
     )
     room = models.ForeignKey(
         MeetingRoom, related_name="reservations", on_delete=models.CASCADE
     )
+    users = models.ManyToManyField(User, related_name="users_reservations")
     external = models.BooleanField(default=False)
     date_from = models.DateTimeField()
     date_to = models.DateTimeField()
-    created_by = models.ForeignKey(User, related_name='user_name',
-                                   max_length=16, on_delete=models.CASCADE,
-                                   null=True)
 
     def __str__(self):
         return self.title

@@ -1,6 +1,8 @@
 from django.urls import reverse
+from model_bakery import baker
 from rest_framework import status
 
+from meetings.models import User
 from meetings.utils.test_utils import BaseTestCase
 
 
@@ -23,6 +25,38 @@ class TestUsers(BaseTestCase):
         response = self.client.get(reverse("users-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_get_user_created_reservations(self):
+        self.client.force_authenticate(self.user2)
+        response = self.client.get(reverse('users-list') + 'user_created_reservations/')
+        data = response.data
+        reservation2_title = 'reservation2'
+        reservation3_title = 'reservation3'
+        self.assertEqual(len(data), 2)
+        self.assertEqual(data[0]['title'], reservation2_title)
+        self.assertEqual(data[1]['title'], reservation3_title)
+        with self.assertNumQueries(3):
+            response = self.client.get(reverse('users-list') + 'user_created_reservations/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_user_created_reservations_queries_count(self):
+        with self.assertNumQueries(1):
+            self.client.get(reverse('users-list') + 'user_created_reservations/')
+
+    def test_get_user_attending_reservations(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(reverse('users-list') + 'user_attending_reservations/')
+        data = response.data
+        reservation_title = 'reservation'
+        reservation3_title = 'reservation3'
+        self.assertEqual(len(data), 2)
+        self.assertEqual(data[0]['title'], reservation_title)
+        self.assertEqual(data[1]['title'], reservation3_title)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_user_attending_reservations_queries_count(self):
+        with self.assertNumQueries(1):
+            self.client.get(reverse('users-list') + 'user_attending_reservations/')
+
 
 class TestReservations(BaseTestCase):
 
@@ -36,6 +70,7 @@ class TestReservations(BaseTestCase):
                 "date_from": "2021-03-18T08:40:36Z",
                 "date_to": "2021-03-19T09:40:38Z",
                 "organizer": self.user.id,
+                "users": [self.user.id],
                 "room": self.room.id,
                 "external": False
                 }
@@ -43,12 +78,31 @@ class TestReservations(BaseTestCase):
         response = self.client.post(reverse("reservations-list"), data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_create_reservation_with_to_many_users(self):
+        fake_user_1 = baker.make(User, _create_files=True)
+        fake_user_2 = baker.make(User, _create_files=True)
+        fake_user_3 = baker.make(User, _create_files=True)
+        data = {"title": "Title123",
+                "date_from": "2021-03-18T08:40:36Z",
+                "date_to": "2021-03-19T09:40:38Z",
+                "organizer": self.user.id,
+                "users": [self.user.id, fake_user_1.id, fake_user_2.id, fake_user_3.id],
+                "room": self.room.id,
+                "external": False
+                }
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.json(), {'non_field_error': ['to_many_users_in_room']})
+
     def test_create_reservation_with_bad_title(self):
         data = {"title": "",
                 "date_from": "2021-03-18T08:40:36Z",
                 "date_to": "2021-03-19T09:40:38Z",
                 "organizer": self.user.id,
                 "room": self.room.id,
+                "users": [self.user.id],
                 "external": False,
                 "foo": "Bar"
                 }
@@ -64,6 +118,7 @@ class TestReservations(BaseTestCase):
                 "date_to": "2020-03-19T09:40:38Z",
                 "organizer": self.user.id,
                 "room": self.room.id,
+                "users": [self.user.id],
                 "external": False
                 }
         self.client.force_authenticate(self.user)
@@ -75,6 +130,123 @@ class TestReservations(BaseTestCase):
         response = self.client.delete(
             f"/api/v1/reservation/delete/{self.reservation.id}/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_create_reservation_with_time_which_is_in_the_middle_of_existing_time(self):
+        """
+        In test database there is room with this time:
+        date_from = "2021-08-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z" #TODO hours
+        """
+        date_from = "2021-08-08T19:57:01.615Z"
+        date_to = "2021-08-19T19:57:01.615Z"
+        data = {"title": "Title123",
+                "date_from": date_from,
+                "date_to": date_to,
+                "organizer": self.user.id,
+                "room": self.room.id,
+                "users": [self.user.id],
+                "external": False
+                }
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, response.data)
+        self.assertEqual(response.json(), {'non_field_error': ['reservation_cancelled_with_wrong_time']})
+
+    def test_create_reservation_with_time_which_is_equal_with_existing_time(self):
+        """
+        In test database there is room with this time:
+        date_from = "2021-08-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z"
+        """
+        date_from = "2021-08-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z"
+
+        data = {"title": "Title123",
+                "date_from": date_from,
+                "date_to": date_to,
+                "organizer": self.user.id,
+                "room": self.room.id,
+                "users": [self.user.id],
+                "external": False
+                }
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, response.data)
+        self.assertEqual(response.json(), {'non_field_error': ['reservation_cancelled_with_wrong_time']})
+
+    def test_create_reservation_with_one_minute_after_previous_reservation_ended(self):
+        """
+        In test database there is room with this time:
+        date_from = "2021-08-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z"
+        """
+        date_from = "2021-10-20T19:59:01.615Z"
+        date_to = "2022-10-25T19:57:01.615Z"
+        data = {
+            "title": "Title123",
+            "date_from": date_from,
+            "date_to": date_to,
+            "organizer": self.user.id,
+            "room": self.room.id,
+            "users": [self.user.id],
+            "external": False
+        }
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.data)
+
+    def test_create_reservation_which_wraps_the_existing_reservation_time(self):
+        """
+        In test database there is room with this time:
+        date_from = "2021-08-07T19:57:01.615Z"
+        date_to = "2021-08-20T19:57:01.615Z"
+        """
+        date_from = "2021-08-06T19:57:01.615Z"
+        date_to = "2021-08-21T19:57:01.615Z"
+
+        data = {"title": "Title123",
+                "date_from": date_from,
+                "date_to": date_to,
+                "organizer": self.user.id,
+                "room": self.room.id,
+                "users": [self.user.id],
+                "external": False
+                }
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, response.data)
+        self.assertEqual(response.json(), {'non_field_error': ['reservation_cancelled_with_wrong_time']})
+
+    def test_create_reservation_with_time_which_wraps_existing_reservation_date_to_time(self):
+        """
+        In test database there is room with this time:
+        date_from: 2021-08-07T19:57:01.615Z
+        date_out: 2021-08-20T19:57:01.615Z
+        """
+
+        date_from = "2021-08-20T19:57:01.615Z"
+        date_to = "2021-08-25T19:57:01.615Z"
+
+        data = {
+            "title": "Title123",
+            "date_from": date_from,
+            "date_to": date_to,
+            "organizer": self.user.id,
+            "room": self.room.id,
+            "users": [self.user.id],
+            "external": False
+        }
+
+        # self.assertNumQueries() get_or_create
+
+        self.client.force_authenticate(self.user)
+        response = self.client.post(reverse("reservations-list"), data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, response.data)
+        self.assertEqual(response.json(), {'non_field_error': ['reservation_cancelled_with_wrong_time']})
 
 
 class TestRooms(BaseTestCase):

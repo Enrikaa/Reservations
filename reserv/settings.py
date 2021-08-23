@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "meetings",
     "djoser",
     "drf_yasg",
-    # "django_filters"
+    "django_filters"
 ]
 
 MIDDLEWARE = [
@@ -130,5 +130,24 @@ SWAGGER_SETTINGS = {
     "JSON_EDITOR": True,
     "SECURITY_DEFINITIONS": {
         "api_key": {"type": "apiKey", "in": "header", "name": "Authorization"}
+    },
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+    "loggers": {
+        "django.db.backends": {
+            "level": "DEBUG",
+        },
     },
 }
