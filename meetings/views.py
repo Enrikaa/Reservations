@@ -82,7 +82,7 @@ class RoomsAll(viewsets.ModelViewSet):
 
 
 class ReservationsAll(viewsets.ModelViewSet):
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
