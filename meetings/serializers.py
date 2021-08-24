@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.models import Q
@@ -19,7 +21,7 @@ class UsersSerializer(serializers.ModelSerializer):
             "is_staff",
         )
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict) -> User:
         with transaction.atomic():
             user = User.objects.create_user(**validated_data)
         return user
@@ -44,7 +46,7 @@ class ReservationSerializer(serializers.ModelSerializer):
                   "date_to",
                   ]
 
-    def validate(self, validated_data):
+    def validate(self, validated_data: dict) -> dict:
         organizer = validated_data['organizer']
         user_reservation_count = Reservation.objects.select_related('organizer').filter(  # TODO count
             organizer=organizer)
@@ -88,8 +90,9 @@ class ReservationSerializer(serializers.ModelSerializer):
             )
         return validated_data
 
-    def to_representation(self, instance):
+    def to_representation(self, instance: Reservation) -> OrderedDict:
         representation = super().to_representation(instance)
         if instance.organizer:
-            representation['organizer'] = instance.organizer.email
+            representation['organizer'] = instance.organizer.emai
+        print(type(representation), "LOOOL")
         return representation
