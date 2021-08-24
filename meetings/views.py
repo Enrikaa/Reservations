@@ -20,13 +20,13 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = User.objects.all()
 
-    # def get_permissions(self):
-    #     if self.action in ['update', 'partial_update', 'destroy', 'list']:
-    #         self.permission_classes = [AllowAny, ]
-    #     elif self.action in ['create']:
-    #         self.permission_classes = [IsAuthenticated, ]
-    #     print(len(connection.queries), "QUERIES COUNT")
-    #     return super().get_permissions()
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy', 'list']:
+            self.permission_classes = [AllowAny, ]
+        elif self.action in ['create']:
+            self.permission_classes = [IsAuthenticated, ]
+        print(len(connection.queries), "QUERIES COUNT")
+        return super().get_permissions()
 
     def get_serializer_context(self):
         context = super(UserViewSet, self).get_serializer_context()

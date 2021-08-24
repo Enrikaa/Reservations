@@ -93,6 +93,5 @@ class ReservationSerializer(serializers.ModelSerializer):
     def to_representation(self, instance: Reservation) -> OrderedDict:
         representation = super().to_representation(instance)
         if instance.organizer:
-            representation['organizer'] = instance.organizer.emai
-        print(type(representation), "LOOOL")
+            representation['organizer'] = instance.organizer.email
         return representation
