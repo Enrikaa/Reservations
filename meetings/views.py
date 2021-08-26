@@ -1,16 +1,15 @@
-from django.db import connection, reset_queries
+from django.db import connection
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework import viewsets
 from rest_framework.decorators import action
-from rest_framework.exceptions import NotFound
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
-from rest_framework.views import APIView
+
 from .models import MeetingRoom, Reservation, User
 from .serializers import MeetingRoomSerializer, ReservationSerializer, \
     UsersSerializer
@@ -34,7 +33,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return context
 
     @action(detail=False, methods=["GET"])
-    def user_created_reservations(self, request: Request, **kwargs) -> Response:
+    def user_created_reservations(self, request: Request) -> Response:
         """
         Finds reservations which is created by specific user
         """
@@ -44,7 +43,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(data=all_users.data)
 
     @action(detail=False, methods=["GET"])
-    def user_attending_reservations(self, request: Request, **kwargs) -> Response:
+    def user_attending_reservations(self, request: Request) -> Response:
         """
         Finds attending reservations in which are specific user as a guest
         """
@@ -71,7 +70,7 @@ class RoomsAll(viewsets.ModelViewSet):
         return super().get_permissions()
 
     @action(detail=True, methods=["GET"], throttle_classes=[UserRateThrottle])
-    def reservations(self, request: Request, **kwargs) -> Response:
+    def reservations(self, request, **kwargs):
         """
         Finds reservations by specific user id
         """

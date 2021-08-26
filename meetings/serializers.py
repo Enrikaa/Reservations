@@ -46,9 +46,9 @@ class ReservationSerializer(serializers.ModelSerializer):
                   "date_to",
                   ]
 
-    def validate(self, validated_data: dict) -> dict:
-        organizer = validated_data['organizer']
-        user_reservation_count = Reservation.objects.select_related('organizer').filter(  # TODO count
+    def validate(self, attrs: dict) -> dict:
+        organizer = attrs['organizer']
+        user_reservation_count = Reservation.objects.select_related('organizer').filter(
             organizer=organizer)
 
         users_with_superuser_status = User.objects.prefetch_related(
@@ -63,7 +63,7 @@ class ReservationSerializer(serializers.ModelSerializer):
                 {'error': f'{organizer} user_have_to_many_reservations'},
             )
 
-        if len(validated_data['users']) >= max_user_amount_in_room:
+        if len(attrs['users']) >= max_user_amount_in_room:
             raise ValidationError(
                 {'non_field_error': 'to_many_users_in_room'},
             )
@@ -73,22 +73,20 @@ class ReservationSerializer(serializers.ModelSerializer):
                 {'is_staff': 'to_many_users_with_superuser_status'},
             )
 
-        room = validated_data['room']
-        check_in = validated_data['date_from']
-        check_out = validated_data['date_to']
+        room = attrs['room']
+        check_in = attrs['date_from']
+        check_out = attrs['date_to']
 
-        check_room_time = Reservation.objects.filter(
-            Q(room=room),
-            Q(date_from__lte=check_in, date_to__gte=check_in) |
-            Q(date_from__lte=check_out, date_to__gte=check_out) |
-            Q(date_from__gte=check_in, date_to__lte=check_out)
-        ).exists()
+        check_room_time = Reservation.objects.filter(Q(room=room),
+                                                     Q(date_from__lte=check_in, date_to__gte=check_in) | Q(
+                                                         date_from__lte=check_out, date_to__gte=check_out) | Q(
+                                                         date_from__gte=check_in, date_to__lte=check_out)).exists()
 
         if check_room_time:
             raise ValidationError(
                 {'non_field_error': 'reservation_cancelled_with_wrong_time'}
             )
-        return validated_data
+        return attrs
 
     def to_representation(self, instance: Reservation) -> OrderedDict:
         representation = super().to_representation(instance)
