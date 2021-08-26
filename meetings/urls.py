@@ -1,11 +1,9 @@
 from django.urls import include, path
-
 from rest_framework import routers
-
 from rest_framework_simplejwt.views import TokenObtainPairView, \
     TokenRefreshView
 
-from .views import DeleteReservation,ReservationsAll, RoomsAll, UserViewSet
+from .views import ReservationsAll, RoomsAll, UserViewSet
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet, basename='users')
@@ -18,7 +16,5 @@ urlpatterns = [
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-    path("reservation/delete/<int:reservation_id>/", DeleteReservation.as_view(), name='reservation-delete')
 
 ]
